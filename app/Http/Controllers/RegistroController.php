@@ -17,7 +17,7 @@ class RegistroController extends Controller
      */
     public function index()
     {
-        //
+        return view('formulario.index');
     }
 
     /**
