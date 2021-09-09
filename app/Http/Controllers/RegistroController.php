@@ -17,7 +17,6 @@ class RegistroController extends Controller
      */
     public function index()
     {
-        return view('formulario.index');
     }
 
     /**
@@ -27,7 +26,7 @@ class RegistroController extends Controller
      */
     public function create()
     {
-        //
+        return view('formulario.index');
     }
 
     /**

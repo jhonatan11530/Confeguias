@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/','PaginaWebController@PaginaWebIndex');
+Route::get('sobre-nosotros','PaginaWebController@PaginaWebNosotros');
+Route::get('guias-nacionales','PaginaWebController@PaginaWebGuias');
+Route::get('contacto','PaginaWebController@PaginaWebContacto');
 
-Route::get('/','RegistroController@index');
-Route::post('/Registro','RegistroController@store');
+/* ROUTE REGISTRO */
+Route::get('Registro/Guia','RegistroController@create');
+Route::post('Registro','RegistroController@store');
