@@ -15,6 +15,8 @@ Route::get('/','PaginaWebController@PaginaWebIndex');
 Route::get('sobre-nosotros','PaginaWebController@PaginaWebNosotros');
 Route::get('guias-nacionales','PaginaWebController@PaginaWebGuias');
 Route::get('contacto','PaginaWebController@PaginaWebContacto');
+Route::get('terminos','PaginaWebController@PaginaWebTerminos');
+Route::get('politicas','PaginaWebController@PaginaWebPoliticas');
 
 /* ROUTE REGISTRO */
 Route::get('Registro/Guia','RegistroController@create');

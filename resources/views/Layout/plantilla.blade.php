@@ -14,7 +14,7 @@
 
 <body>
     <nav class="navbar navbar-expand-lg justify-content-center navbar-light bg-light ">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="/">Navbar</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -55,7 +55,7 @@
                     <h6 class="text-uppercase mb-3"><strong>Dirección</strong></h6>
                     <p>### ### ####</p>
                     <h6 class="text-uppercase mb-2"><strong>Horario atención</strong></h6>
-                    <span style="color: red">Lunes a jueves:</span>
+                    <span style="color: red">Lunes a Jueves:</span>
                     <p>### ### ####</p>
                 </div>
                 <!--Grid column-->
@@ -81,13 +81,6 @@
             <hr>
             <div class="row">
                 <!--Grid column-->
-                <!----
-                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                    <h6 class="text-uppercase mb-0">
-                        <?php setlocale(LC_ALL, 'es_Co'); date_default_timezone_set('America/Bogota'); echo strftime("%A %d %B %Y %R"); echo"&nbsp;"; echo date('a');  ?>
-                    </h6>
-                </div>--->
-                <!--Grid column-->
                 <div class="col-lg-3 col-md-12 mb-0 mb-md-0">
                     <h6 class="text-uppercase mb-0">
                         <?php setlocale(LC_ALL, 'es_Co'); date_default_timezone_set('America/Bogota'); echo strftime("%A %d %B %Y %R"); echo"&nbsp;"; echo date('a');  ?>
@@ -107,9 +100,8 @@
 
                 <!--Grid column-->
                 <div class="col-lg-4 col-md-6 mb-0 mb-md-0">
-                    <p><a href="#" class="text-white">Términos y condiciones</a></p>
-                    <p><a href="#" class="text-white">Políticas y procedimientos para el tratamiento de datos
-                            personales</a></p>
+                    <p><a href="/terminos" class="text-white">Términos y condiciones</a></p>
+                    <p><a href="/politicas" class="text-white">Políticas y procedimientos para el tratamiento de datos personales</a></p>
                 </div>
                 <!--Grid column-->
 
@@ -121,7 +113,7 @@
         <!-- Copyright -->
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
             © 2021 Copyright:
-            <a class="text-white" href="#">### ###</a>
+            <a class="text-white" href="#">###########</a>
         </div>
         <!-- Copyright -->
     </footer>

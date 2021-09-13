@@ -22,4 +22,12 @@ class PaginaWebController extends Controller
     {
         return view('PaginaWeb.guia');
     }
+    function PaginaWebTerminos()
+    {
+        return view('PaginaWeb.terminos');
+    }
+    function PaginaWebPoliticas()
+    {
+        return view('PaginaWeb.politicas');
+    }
 }
