@@ -33,165 +33,197 @@
                 src="https://imagekit.androidphoria.com/wp-content/uploads/como-buscar-una-imagen-en-facebook-con-una-foto.jpg"
                 alt="Error Image" style="width: 100%;height: 150px;">
             <hr>
-            <form action="/Registro" method="POST" enctype="multipart/form-data">
+            <form action="/Registro" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
-            <p class="text-center">DATOS PERSONALES</p>
-            <div class="row">
-                <div class="col-sm-6">
-                    <label>Nombre</label>
-                    <input type="text" name="Nombre" placeholder="Nombre" class="form-control mb-2">
-                </div>
-                <div class="col-sm-6">
-                    <label>Apellidos</label>
-                    <input type="text" name="Apellido" placeholder="Apellido" class="form-control mb-2">
-                </div>
-                <div class="col-sm-12">
-                    <label>Adjuntar Foto PDF (personal)</label>
-                    <input type="file" name="AdjuntarFoto" accept="application/pdf" class="form-control mb-2">
-                </div>
-                <div class="col-sm-6">
-                    <label>Tipo de identificacion</label>
-                    <select name="TipoIdentificacion" class="form-control mb-2">
-                        <option value="" selected disabled>Seleccione</option>
-                        <option value="Registro civil">Registro civil(RC)</option>
-                        <option value="Targeta de identidad">Tarjeta de identidad(TI)</option>
-                        <option value="Cédula de ciudadania">Cédula de ciudadanía(CC)</option>
-                        <option value="Targeta de extrangeria">Tarjeta de extranjería(TE)</option>
-                        <option value="Cédula de extrangeria">Cédula de extranjería(CE)</option>
-                        <option value="Número de identificacion tributaria">Número de identificación
-                            tributaria(NIT)</option>
-                        <option value="Pasaporte">Pasaporte(PP)</option>
-                        <option value="Documento de identificación de extrangero">Documento de
-                            identificación extranjero(DIE)</option>
-                    </select>
-                </div>
-                <div class="col-sm-6">
-                    <label>Numero de identificacion</label>
-                    <input class="form-control mb-2" type="number" min="0" name="NumeroIdentificacion" placeholder="Numero de identificacion">
-                </div>
-                <div class="col-sm-6">
-                    <label>Fecha de expedición</label>
-                    <input type="date" name="FechaExpedicion" class="form-control mb-2">
-                </div>
-                <div class="col-sm-6">
-                    <label>Adjunta documento PDF (Documento Personal)</label>
-                    <input type="file" name="AdjuntaDocumento" accept="application/pdf" class="form-control mb-2">
-                </div>
-
-                <div class="col-sm-6">
-                    <label>Dirreccion de residencia</label>
-                    <input type="text" name="DirreccionResidencia" class="form-control mb-2">
-                </div>
-                <div class="col-sm-6">
-                    <label>Nomenclatura</label>
-                    <input type="text" name="Nomenclatura" class="form-control mb-2">
-                </div>
-                <div class="col-sm-6">
-                    <label>Celular</label>
-                    <input type="number" name="Celular" min="0" class="form-control mb-2">
-                </div>
-                <div class="col-sm-6">
-                    <label>Telefono Fijo</label>
-                    <input type="number" name="TelefonoFijo" min="0" class="form-control mb-2">
-                </div> 
-                <div class="col-sm-6">
-                    <label>Correo electronico</label>
-                    <input type="email" name="Correo" class="form-control mb-2">
-                </div>
-                <div class="col-sm-6">
-                    <label>Contraseña</label>
-                    <input type="password" name="Contraseña" placeholder="cree una contraseña ingresar al sistema" class="form-control mb-2">
-                </div>
-            </div>
-            <hr>
-            <p class="text-center">DATOS PORFESIONALES</p>
-            <div class="row">
-                <div class="col-sm-6">
-                    <label>N° Tarjeta Profesional</label>
-                    <input type="number" min="0" name="TarjetaProfesional" class="form-control mb-3">
-                </div>
-                <div class="col-sm-6">
-                    <label>Adjunto Documento PDF (Tarjeta Profesional)</label>
-                    <input type="file" name="AdjuntoTarjetaProfesional" accept="application/pdf" class="form-control mb-3">
-                </div>
-                <div class="col-sm-6">
-                    <label>N° Guia Registro Nacional de Turismo</label>
-                    <input type="number" min="0" name="NGuiaRegistro" class="form-control mb-3">
-                </div>
-                <div class="col-sm-6">
-                    <label>Adjunto Documento PDF (Registro Nacional de Turismo)</label>
-                    <input type="file" name="DocumentoGuiaRegistro" accept="application/pdf" class="form-control mb-3">
-                </div>
-                <div class="col-sm-12">
-                    <label>GUIA AGREMIADO</label>
-                    <div class="form-group">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="Guia" value="SI">
-                            <label class="form-check-label">SI</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="Guia" value="NO">
-                            <label class="form-check-label">NO</label>
-                        </div>
+                <p class="text-center">DATOS PERSONALES</p>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label>Nombre</label>
+                        <input type="text" name="Nombre" placeholder="Nombre" class="form-control mb-2">
+                    </div>
+                    <div class="col-sm-6">
+                        <label>Apellidos</label>
+                        <input type="text" name="Apellido" placeholder="Apellido" class="form-control mb-2">
+                    </div>
+                    <div class="col-sm-12">
+                        <label>Adjuntar Foto PDF (personal)</label>
+                        <input type="file" name="AdjuntarFoto" accept="application/pdf" class="form-control mb-2">
+                    </div>
+                    <div class="col-sm-6">
+                        <label>Tipo de identificacion</label>
+                        <select name="TipoIdentificacion" class="form-control mb-2">
+                            <option value="" selected disabled>Seleccione</option>
+                            <option value="Registro civil">Registro civil(RC)</option>
+                            <option value="Targeta de identidad">Tarjeta de identidad(TI)</option>
+                            <option value="Cédula de ciudadania">Cédula de ciudadanía(CC)</option>
+                            <option value="Targeta de extrangeria">Tarjeta de extranjería(TE)</option>
+                            <option value="Cédula de extrangeria">Cédula de extranjería(CE)</option>
+                            <option value="Número de identificacion tributaria">Número de identificación
+                                tributaria(NIT)</option>
+                            <option value="Pasaporte">Pasaporte(PP)</option>
+                            <option value="Documento de identificación de extrangero">Documento de
+                                identificación extranjero(DIE)</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-6">
+                        <label>Numero de identificacion</label>
+                        <input class="form-control mb-2" type="number" min="0" name="NumeroIdentificacion"
+                            placeholder="Numero de identificacion">
+                    </div>
+                    <div class="col-sm-6">
+                        <label>Fecha de expedición</label>
+                        <input type="date" name="FechaExpedicion" value="<?php echo date("Y-m-d"); ?>"
+                            class="form-control mb-2">
+                    </div>
+                    <div class="col-sm-6">
+                        <label>Dirreccion de residencia</label>
+                        <input type="text" name="DirreccionResidencia" class="form-control mb-2">
+                    </div>
+                    <div class="col-sm-6">
+                        <label>Nomenclatura</label>
+                        <input type="text" name="Nomenclatura" class="form-control mb-2">
+                    </div>
+                    <div class="col-sm-6">
+                        <label>Celular</label>
+                        <input type="number" name="Celular" min="0" class="form-control mb-2">
+                    </div>
+                    <div class="col-sm-6">
+                        <label>Telefono Fijo</label>
+                        <input type="number" name="TelefonoFijo" min="0" class="form-control mb-2">
                     </div>
                 </div>
-                <div id="GUIA"></div>
-                <div class="col-sm-12">
-                    <label>Descripcion Del Perfil</label>
-                    <textarea name="DescripcionPerfil" class="form-control" placeholder="Descripcion del perfil"
-                        rows="5"></textarea>
+                <p class="text-center">DATOS INICIO DE SESSION</p>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label>Correo electronico</label>
+                        <input type="email" name="Correo" class="form-control mb-2">
+                    </div>
+                    <div class="col-sm-6">
+                        <label>Contraseña</label>
+                        <input type="password" name="Contraseña" placeholder="cree una contraseña ingresar al sistema"
+                            class="form-control mb-2">
+                    </div>
                 </div>
-            </div>
-            <hr>
-            <p class="text-center">DATOS DE ESTUDIOS</p>
-            <div class="row">
-                <div class="col-sm-12 mb-5">
-                    <label>Certificados de Idiomas</label><a class="btn btn-primary float-right" id="clickIdioma">+</a>
-                    <input type="text" name="TituloCertificadosIdiomas" class="form-control mb-2">
-                    <input type="file" name="CertificadosPDFIdiomas" accept="application/pdf" class="form-control mb-3">
-                    <div id="Idiomas"></div>
+                <hr>
+                <p class="text-center">DATOS PROFESIONALES</p>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label>N° Tarjeta Profesional</label>
+                        <input type="number" min="0" name="TarjetaProfesional" class="form-control mb-3">
+                    </div>
+                    <div class="col-sm-6">
+                        <label>Adjunto Documento PDF (Tarjeta Profesional)</label>
+                        <input type="file" name="AdjuntoTarjetaProfesional" accept="application/pdf"
+                            class="form-control mb-3">
+                    </div>
+                    <div class="col-sm-6">
+                        <label>N° Guia Registro Nacional de Turismo</label>
+                        <input type="number" min="0" name="NGuiaRegistro" class="form-control mb-3">
+                    </div>
+                    <div class="col-sm-6">
+                        <label>Adjunto Documento PDF (Registro Nacional de Turismo)</label>
+                        <input type="file" name="DocumentoGuiaRegistro" accept="application/pdf"
+                            class="form-control mb-3">
+                    </div>
+                    <div class="col-sm-12">
+                        <label>GUIA AGREMIADO</label>
+                        <div class="form-group">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="Guia" value="SI">
+                                <label class="form-check-label">SI</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="Guia" value="NO">
+                                <label class="form-check-label">NO</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="GUIA"></div>
+                    <div class="col-sm-12">
+                        <label>Descripcion Del Perfil</label>
+                        <textarea name="DescripcionPerfil" class="form-control" placeholder="Descripcion del perfil"
+                            rows="5"></textarea>
+                    </div>
                 </div>
-                <div class="col-sm-12 mb-5">
-                    <label>Certificados Academicos</label><a class="btn btn-primary float-right" id="clickAcademicos">+</a>
-                    <input type="text" name="TituloCertificadosAcademicos" class="form-control mb-2">
-                    <input type="file" name="CertificadosPDFAcademicos" accept="application/pdf" class="form-control mb-3">
-                    <div id="Academicos"></div>
+                <hr>
+                <p class="text-center">DATOS DE ESTUDIOS</p>
+                <div class="row">
+                    <div class="col-sm-12 mb-2">
+                        <label>Certificados de Idiomas</label><a class="btn btn-primary float-right"
+                            id="clickIdioma">+</a>
+                        <input type="text" name="TituloCertificadosIdiomas[]" class="form-control mb-2">
+                        <input type="file" name="CertificadosPDFIdiomas[]" accept="application/pdf"
+                            class="form-control mb-3">
+                        <div id="Idiomas"></div>
+                    </div>
+                    <div class="col-sm-12 mb-2">
+                        <label>Certificados Academicos</label><a class="btn btn-primary float-right"
+                            id="clickAcademicos">+</a>
+                        <input type="text" name="TituloCertificadosAcademicos[]" class="form-control mb-2">
+                        <input type="file" name="CertificadosPDFAcademicos[]" accept="application/pdf"
+                            class="form-control mb-3">
+                        <div id="Academicos"></div>
+                    </div>
+                    <div class="col-sm-12 mb-2">
+                        <label>Certificados De otros Estudios</label><a class="btn btn-primary float-right"
+                            id="clickEstudios">+</a>
+                        <input type="text" name="TituloCertificadosEstudios[]" class="form-control mb-2">
+                        <input type="file" name="CertificadosPDFEstudios[]" accept="application/pdf"
+                            class="form-control mb-3">
+                        <div id="Estudios"></div>
+                    </div>
                 </div>
-                <div class="col-sm-12 mb-5">
-                    <label>Certificados De otros Estudios</label><a class="btn btn-primary float-right" id="clickEstudios">+</a>
-                    <input type="text" name="TituloCertificadosEstudios" class="form-control mb-2">
-                    <input type="file" name="CertificadosPDFEstudios" accept="application/pdf" class="form-control mb-3">
-                    <div id="Estudios"></div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <button type="submit" class="btn btn-primary">Enviar Datos</button>
+                    </div>
                 </div>
-            </div>
-            <button type="submit" class="btn btn-primary">Enviar</button>
-        </form>
+            </form>
         </div>
     </div>
+
+    <!---- MODAL BIENVENIDO ---->
+    <div class="modal fade" id="PresentacionModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Bienvenidos a Confederación de Guías de Turismo de Colombia
+                        CONFEGUIAS</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Apreciados colegas:</p>
+                    <p>Desde la Confederación de Guías de Turismo de Colombia – CONFEGUIAS -, estamos trabajando para lograr
+                        construir un gremio unido y propositivo que trabaje en favor del bienestar colectivo de todos
+                        los Guías de Turismo del país, la defensa de sus derechos profesionales, el impulso al
+                        desarrollo y la excelencia de la Profesión del Guía de Turismo y, por consiguiente, en pro del
+                        engrandecimiento de Colombia a través de la industria turística nacional. </p>
+                    <p>Para ello, la Confederación ha desarrollado este formulario con el fin de conseguir por primera
+                        vez una base de datos de los Guías Profesionales de Colombia, que servirá para desarrollar los
+                        programas de competitividad, capacitación y bienestar que se han venido trabajando en
+                        CONFEGUIAS.</p>
+                    <p>Invitamos a todos nuestros colegas agremiados y no agremiados a diligenciar de manera muy
+                        aplicada y diligente este formulario, que tiene como objetivo además de reconocernos, poder
+                        entregar una información exacta y confiable a las agencias de viajes y a los turistas de los
+                        Guías Profesionales con su tarjeta profesional y registro nacional de turismo activo, sus
+                        especializaciones, ubicación, contacto, experiencia y cualificaciones.
+                        Plazo máximo para envío: <strong>30 septiembre de 2021</strong>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    @include('formulario.Mensaje')
     <script type="text/javascript">
         $(document).ready(function() {
-            $("#clickIdioma").on('click',function() {
-                var html =`
-                <label>Certificados de Idiomas</label>
-                    <input type="text" name="TituloCertificadosIdiomas" class="form-control mb-2">
-                    <input type="file" name="CertificadosPDFIdiomas" accept="application/pdf" class="form-control mb-3">`;
-                $("#Idiomas").append(html);
-            })
-            $("#clickAcademicos").on('click',function() {
-                var html =`
-                <label>Certificados Academicos</label>
-                    <input type="text" name="TituloCertificadosAcademicos" class="form-control mb-2">
-                    <input type="file" name="CertificadosPDFAcademicos" accept="application/pdf" class="form-control mb-3">`;
-                $("#Academicos").append(html);;
-            })
-            $("#clickEstudios").on('click',function() {
-                var html =`
-                <label>Certificados De otros Estudios</label>
-                    <input type="text" name="TituloCertificadosEstudios" class="form-control mb-2">
-                    <input type="file" name="CertificadosPDFEstudios" accept="application/pdf" class="form-control mb-3">`;
-                $("#Estudios").append(html);
-            })
-            $('input:radio[name="Guia"]').change(function() {
+           $("#PresentacionModal").modal('show');
+           $('input:radio[name="Guia"]').change(function() {
                 if ($(this).val() == 'NO') {
                     $("#GUIA").empty();
                 }
@@ -208,6 +240,27 @@
                 </div>`;
                 $("#GUIA").html(asignar);
                 }
+            })
+            $("#clickIdioma").on('click',function() {
+                var html =`
+                <label>Certificados de Idiomas</label>
+                    <input type="text" name="TituloCertificadosIdiomas[]" class="form-control mb-2">
+                    <input type="file" name="CertificadosPDFIdiomas[]" accept="application/pdf" class="form-control mb-3">`;
+                $("#Idiomas").append(html);
+            })
+            $("#clickAcademicos").on('click',function() {
+                var html =`
+                <label>Certificados Academicos</label>
+                    <input type="text" name="TituloCertificadosAcademicos[]" class="form-control mb-2">
+                    <input type="file" name="CertificadosPDFAcademicos[]" accept="application/pdf" class="form-control mb-3">`;
+                $("#Academicos").append(html);
+            })
+            $("#clickEstudios").on('click',function() {
+                var html =`
+                <label>Certificados De otros Estudios</label>
+                    <input type="text" name="TituloCertificadosEstudios[]" class="form-control mb-2">
+                    <input type="file" name="CertificadosPDFEstudios[]" accept="application/pdf" class="form-control mb-3">`;
+                $("#Estudios").append(html);
             })
         })
     </script>

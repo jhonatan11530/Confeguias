@@ -44,10 +44,6 @@ class RegistroController extends Controller
         $nombre_arch = $_FILES['AdjuntarFoto']['name'];
         $nueva_ruta = "file-registro/" . $nombre_arch;
 
-        $ruta_arch1 = $_FILES['AdjuntaDocumento']['tmp_name'];
-        $nombre_arch1 = $_FILES['AdjuntaDocumento']['name'];
-        $nueva_ruta1 = "file-registro/" . $nombre_arch1;
-
         $ruta_arch2 = $_FILES['AdjuntoTarjetaProfesional']['tmp_name'];
         $nombre_arch2 = $_FILES['AdjuntoTarjetaProfesional']['name'];
         $nueva_ruta2 = "file-registro/" . $nombre_arch2;
@@ -56,23 +52,7 @@ class RegistroController extends Controller
         $nombre_arch3 = $_FILES['DocumentoGuiaRegistro']['name'];
         $nueva_ruta3 = "file-registro/" . $nombre_arch3;
 
-        $ruta_arch5 = $_FILES['CertificadosPDFIdiomas']['tmp_name'];
-        $nombre_arch5 = $_FILES['CertificadosPDFIdiomas']['name'];
-        $nueva_ruta5 = "file-registro/" . $nombre_arch5;
-        Move_uploaded_file($ruta_arch5, $nueva_ruta5);
-
-        $ruta_arch6 = $_FILES['CertificadosPDFAcademicos']['tmp_name'];
-        $nombre_arch6 = $_FILES['CertificadosPDFAcademicos']['name'];
-        $nueva_ruta6 = "file-registro/" . $nombre_arch6;
-        Move_uploaded_file($ruta_arch6, $nueva_ruta6);
-
-        $ruta_arch7 = $_FILES['CertificadosPDFEstudios']['tmp_name'];
-        $nombre_arch7 = $_FILES['CertificadosPDFEstudios']['name'];
-        $nueva_ruta7 = "file-registro/" . $nombre_arch7;
-        Move_uploaded_file($ruta_arch7, $nueva_ruta7);
-
         Move_uploaded_file($ruta_arch, $nueva_ruta);
-        Move_uploaded_file($ruta_arch1, $nueva_ruta1);
         Move_uploaded_file($ruta_arch2, $nueva_ruta2);
         Move_uploaded_file($ruta_arch3, $nueva_ruta3);
 
@@ -82,127 +62,150 @@ class RegistroController extends Controller
             $nueva_ruta4 = "file-registro/" . $nombre_arch4;
             Move_uploaded_file($ruta_arch4, $nueva_ruta4);
         }
-        $create = date("Y-m-d H:i:s");
+        if ($Guia == "SI") {
 
+            $Registro = new Registro();
+            $Registro->Nombre = $Nombre;
+            $Registro->Apellido = $Apellido;
+            $Registro->AdjuntarFoto = $nueva_ruta;
+            $Registro->TipoIdentificacion = $TipoIdentificacion;
+            $Registro->NumeroIdentificacion = $NumeroIdentificacion;
+            $Registro->FechaExpedicion = $FechaExpedicion;
+            $Registro->DirreccionResidencia = $DirreccionResidencia;
+            $Registro->Nomenclatura = $Nomenclatura;
+            $Registro->Celular = $Celular;
+            $Registro->TelefonoFijo = $TelefonoFijo;
+            $Registro->TarjetaProfesional = $TarjetaProfesional;
+            $Registro->AdjuntoTarjetaProfesional = $nueva_ruta2;
+            $Registro->DescripcionPerfil = $DescripcionPerfil;
+            $Registro->NGuiaRegistro = $NGuiaRegistro;
+            $Registro->DocumentoGuiaRegistro = $nueva_ruta3;
+            $Registro->Guia = $Guia;
+            $Registro->NombreAsociacion = $NombreAsociacion;
+            $Registro->CertificadoAsociacion = $nueva_ruta4;
+            $Registro->save();
 
+            $user = new Usuario();
+            $user->identificacion = $NumeroIdentificacion;
+            $user->correo = $Correo;
+            $user->password = $Contraseña;
+            $user->save();
 
-            if ($Guia == "SI") {
-
-                $Registro = new Registro();
-                $Registro->Nombre = $Nombre;
-                $Registro->Apellido = $Apellido;
-                $Registro->AdjuntarFoto = $nueva_ruta;
-                $Registro->TipoIdentificacion = $TipoIdentificacion;
-                $Registro->NumeroIdentificacion = $NumeroIdentificacion;
-                $Registro->FechaExpedicion = $FechaExpedicion;
-                $Registro->AdjuntaDocumento = $nueva_ruta1;
-                $Registro->DirreccionResidencia = $DirreccionResidencia;
-                $Registro->Nomenclatura = $Nomenclatura;
-                $Registro->Celular = $Celular;
-                $Registro->TelefonoFijo = $TelefonoFijo;
-                $Registro->TarjetaProfesional = $TarjetaProfesional;
-                $Registro->AdjuntoTarjetaProfesional = $nueva_ruta2;
-                $Registro->DescripcionPerfil = $DescripcionPerfil;
-                $Registro->NGuiaRegistro = $NGuiaRegistro;
-                $Registro->DocumentoGuiaRegistro = $nueva_ruta3;
-                $Registro->Guia = $Guia;
-                $Registro->NombreAsociacion = $NombreAsociacion;
-                $Registro->CertificadoAsociacion = $nueva_ruta4;
-                $Registro->create_at = $create;
-                $Registro->save();
-
-                $user = new Usuario();
-                $user->identificacion = $NumeroIdentificacion;
-                $user->correo = $Correo;
-                $user->password = $Contraseña;
-                $user->create_at = $create;
-                $user->save();
-
-                // CERTIFICADOS DE IDIOMAS
-                $Registro = new Documentos();
-                $Registro->usuario = $NumeroIdentificacion;
-                $Registro->titulo = $TituloCertificadosIdiomas;
-                $Registro->categoria = 'Certificado de Idiomas';
-                $Registro->documento = $nueva_ruta5;
-                $Registro->created_at = $create;
-                $Registro->save();
-
-                // CERTIFICADOS DE ACADEMICOS
-                $Registro = new Documentos();
-                $Registro->usuario = $NumeroIdentificacion;
-                $Registro->titulo = $TituloCertificadosAcademicos;
-                $Registro->categoria = 'Certificado Academicos';
-                $Registro->documento = $nueva_ruta6;
-                $Registro->created_at = $create;
-                $Registro->save();
-
-                // CERTIFICADOS DE ESTUDIOS
-                $Registro = new Documentos();
-                $Registro->usuario = $NumeroIdentificacion;
-                $Registro->titulo = $TituloCertificadosEstudios;
-                $Registro->categoria = 'Certificado de Estudios';
-                $Registro->documento = $nueva_ruta7;
-                $Registro->created_at = $create;
-                $Registro->save();
-            } else {
-
-                $Registro = new Registro();
-                $Registro->Nombre = $Nombre;
-                $Registro->Apellido = $Apellido;
-                $Registro->AdjuntarFoto = $nueva_ruta;
-                $Registro->TipoIdentificacion = $TipoIdentificacion;
-                $Registro->NumeroIdentificacion = $NumeroIdentificacion;
-                $Registro->FechaExpedicion = $FechaExpedicion;
-                $Registro->AdjuntaDocumento = $nueva_ruta1;
-                $Registro->DirreccionResidencia = $DirreccionResidencia;
-                $Registro->Nomenclatura = $Nomenclatura;
-                $Registro->Celular = $Celular;
-                $Registro->TelefonoFijo = $TelefonoFijo;
-                $Registro->TarjetaProfesional = $TarjetaProfesional;
-                $Registro->AdjuntoTarjetaProfesional = $nueva_ruta2;
-                $Registro->DescripcionPerfil = $DescripcionPerfil;
-                $Registro->NGuiaRegistro = $NGuiaRegistro;
-                $Registro->DocumentoGuiaRegistro = $nueva_ruta3;
-                $Registro->Guia = $Guia;
-                $Registro->create_at = $create;
-                $Registro->save();
-
-                $user = new Usuario();
-                $user->identificacion = $NumeroIdentificacion;
-                $user->correo = $Correo;
-                $user->password = $Contraseña;
-                $user->create_at = $create;
-                $user->save();
+            foreach ($_FILES['CertificadosPDFIdiomas']['name'] as $key => $value) {
+                $ruta_arch5[$key] = $_FILES['CertificadosPDFIdiomas']['tmp_name'][$key];
+                $nombre_arch5[$key] = $_FILES['CertificadosPDFIdiomas']['name'][$key];
+                $nueva_ruta5[$key] = "file-registro/" . $nombre_arch5[$key];
+                Move_uploaded_file($ruta_arch5[$key], $nueva_ruta5[$key]);
 
                 // CERTIFICADOS DE IDIOMAS
                 $Registro = new Documentos();
                 $Registro->usuario = $NumeroIdentificacion;
-                $Registro->titulo = $TituloCertificadosIdiomas;
+                $Registro->titulo = $TituloCertificadosIdiomas[$key];
                 $Registro->categoria = 'Certificado de Idiomas';
-                $Registro->documento = $nueva_ruta5;
-                $Registro->created_at = $create;
-                $Registro->save();
-
-                // CERTIFICADOS DE ACADEMICOS
-                $Registro = new Documentos();
-                $Registro->usuario = $NumeroIdentificacion;
-                $Registro->titulo = $TituloCertificadosAcademicos;
-                $Registro->categoria = 'Certificado Academicos';
-                $Registro->documento = $nueva_ruta6;
-                $Registro->created_at = $create;
-                $Registro->save();
-
-                // CERTIFICADOS DE ESTUDIOS
-                $Registro = new Documentos();
-                $Registro->usuario = $NumeroIdentificacion;
-                $Registro->titulo = $TituloCertificadosEstudios;
-                $Registro->categoria = 'Certificado de Estudios';
-                $Registro->documento = $nueva_ruta7;
-                $Registro->created_at = $create;
+                $Registro->documento = $nueva_ruta5[$key];
                 $Registro->save();
             }
+            foreach ($_FILES['CertificadosPDFAcademicos']['name'] as $key => $value) {
+                $ruta_arch6[$key] = $_FILES['CertificadosPDFAcademicos']['tmp_name'][$key];
+                $nombre_arch6[$key] = $_FILES['CertificadosPDFAcademicos']['name'][$key];
+                $nueva_ruta6[$key] = "file-registro/" . $nombre_arch6[$key];
+                Move_uploaded_file($ruta_arch6[$key], $nueva_ruta6[$key]);
 
-        return redirect('/')->with('success', 'Usted Se ha Registrado Correctamente !');
+                // CERTIFICADOS DE ACADEMICOS
+                $Registro = new Documentos();
+                $Registro->usuario = $NumeroIdentificacion;
+                $Registro->titulo = $TituloCertificadosAcademicos[$key];
+                $Registro->categoria = 'Certificado Academicos';
+                $Registro->documento = $nueva_ruta6[$key];
+                $Registro->save();
+            }
+            foreach ($_FILES['CertificadosPDFEstudios']['name'] as $key => $value) {
+                $ruta_arch7[$key] = $_FILES['CertificadosPDFEstudios']['tmp_name'][$key];
+                $nombre_arch7[$key] = $_FILES['CertificadosPDFEstudios']['name'][$key];
+                $nueva_ruta7[$key] = "file-registro/" . $nombre_arch7[$key];
+                Move_uploaded_file($ruta_arch7[$key], $nueva_ruta7[$key]);
+
+                // CERTIFICADOS DE ESTUDIOS
+                $Registro = new Documentos();
+                $Registro->usuario = $NumeroIdentificacion;
+                $Registro->titulo = $TituloCertificadosEstudios[$key];
+                $Registro->categoria = 'Certificado de Estudios';
+                $Registro->documento = $nueva_ruta7[$key];
+                $Registro->save();
+            }
+        } else {
+
+            $Registro = new Registro();
+            $Registro->Nombre = $Nombre;
+            $Registro->Apellido = $Apellido;
+            $Registro->AdjuntarFoto = $nueva_ruta;
+            $Registro->TipoIdentificacion = $TipoIdentificacion;
+            $Registro->NumeroIdentificacion = $NumeroIdentificacion;
+            $Registro->FechaExpedicion = $FechaExpedicion;
+            $Registro->DirreccionResidencia = $DirreccionResidencia;
+            $Registro->Nomenclatura = $Nomenclatura;
+            $Registro->Celular = $Celular;
+            $Registro->TelefonoFijo = $TelefonoFijo;
+            $Registro->TarjetaProfesional = $TarjetaProfesional;
+            $Registro->AdjuntoTarjetaProfesional = $nueva_ruta2;
+            $Registro->DescripcionPerfil = $DescripcionPerfil;
+            $Registro->NGuiaRegistro = $NGuiaRegistro;
+            $Registro->DocumentoGuiaRegistro = $nueva_ruta3;
+            $Registro->Guia = $Guia;
+            $Registro->save();
+
+            $user = new Usuario();
+            $user->identificacion = $NumeroIdentificacion;
+            $user->correo = $Correo;
+            $user->password = $Contraseña;
+            $user->save();
+
+
+            foreach ($_FILES['CertificadosPDFIdiomas']['name'] as $key => $value) {
+
+                $ruta_arch5[$key] = $_FILES['CertificadosPDFIdiomas']['tmp_name'][$key];
+                $nombre_arch5[$key] = $_FILES['CertificadosPDFIdiomas']['name'][$key];
+                $nueva_ruta5[$key] = "file-registro/" . $nombre_arch5[$key];
+                Move_uploaded_file($ruta_arch5[$key], $nueva_ruta5[$key]);
+
+                // CERTIFICADOS DE IDIOMAS
+                $Registro = new Documentos();
+                $Registro->usuario = $NumeroIdentificacion;
+                $Registro->titulo = $TituloCertificadosIdiomas[$key];
+                $Registro->categoria = 'Certificado de Idiomas';
+                $Registro->documento = $nueva_ruta5[$key];
+                $Registro->save();
+            }
+            foreach ($_FILES['CertificadosPDFAcademicos']['name'] as $key => $value) {
+                $ruta_arch6[$key] = $_FILES['CertificadosPDFAcademicos']['tmp_name'][$key];
+                $nombre_arch6[$key] = $_FILES['CertificadosPDFAcademicos']['name'][$key];
+                $nueva_ruta6[$key] = "file-registro/" . $nombre_arch6[$key];
+                Move_uploaded_file($ruta_arch6[$key], $nueva_ruta6[$key]);
+
+                // CERTIFICADOS DE ACADEMICOS
+                $Registro = new Documentos();
+                $Registro->usuario = $NumeroIdentificacion;
+                $Registro->titulo = $TituloCertificadosAcademicos[$key];
+                $Registro->categoria = 'Certificado Academicos';
+                $Registro->documento = $nueva_ruta6[$key];
+                $Registro->save();
+            }
+            foreach ($_FILES['CertificadosPDFEstudios']['name'] as $key => $value) {
+                $ruta_arch7[$key] = $_FILES['CertificadosPDFEstudios']['tmp_name'][$key];
+                $nombre_arch7[$key] = $_FILES['CertificadosPDFEstudios']['name'][$key];
+                $nueva_ruta7[$key] = "file-registro/" . $nombre_arch7[$key];
+                Move_uploaded_file($ruta_arch7[$key], $nueva_ruta7[$key]);
+
+                // CERTIFICADOS DE ESTUDIOS
+                $Registro = new Documentos();
+                $Registro->usuario = $NumeroIdentificacion;
+                $Registro->titulo = $TituloCertificadosEstudios[$key];
+                $Registro->categoria = 'Certificado de Estudios';
+                $Registro->documento = $nueva_ruta7[$key];
+                $Registro->save();
+            }
+        }
+          return redirect('/Registro/Guia')->with('success', 'Gracias por dar respuesta oportuna y apoyar esta iniciativa gremial que nos permitirá obtener por primera vez una base de datos completa, confiable y accesible de los Guías Profesionales de Colombia.');
     }
 
     /**

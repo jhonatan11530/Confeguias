@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Registro extends Model
 {
-    public $timestamps = false;
+   // public $timestamps = false;
     protected $table = 'registro';
     protected $primaryKey = 'id';
     protected $fillable = [
