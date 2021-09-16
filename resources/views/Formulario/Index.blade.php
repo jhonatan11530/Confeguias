@@ -16,7 +16,7 @@
     <div class="row" style="width: 100%">
         <div class="col-sm-7">
             <img class="img-fluid"
-                src="https://imagekit.androidphoria.com/wp-content/uploads/como-buscar-una-imagen-en-facebook-con-una-foto.jpg"
+                src="{{ asset('img/fondo.jpg') }}"
                 style="height: 100%;width: 100%;" alt="Error Image">
         </div>
         <div class="col-sm-5">

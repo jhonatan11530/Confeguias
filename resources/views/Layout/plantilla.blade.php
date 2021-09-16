@@ -34,6 +34,9 @@
                     <a class="nav-link" href="/contacto">Contacto</a>
                 </li>
                 <li class="nav-item mr-sm-2">
+                    <a class="nav-link" href="/contacto">Denuncie</a>
+                </li>
+                <li class="nav-item mr-sm-2">
                     <a class="btn btn-primary" href="/Registro/Guia" target="_blank">AFILIATE</a>
                 </li>
                 <li class="nav-item">
