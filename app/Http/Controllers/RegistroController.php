@@ -88,7 +88,7 @@ class RegistroController extends Controller
             $user = new Usuario();
             $user->identificacion = $NumeroIdentificacion;
             $user->correo = $Correo;
-            $user->password = $Contraseña;
+            $user->password = bcrypt($Contraseña);
             $user->save();
 
             foreach ($_FILES['CertificadosPDFIdiomas']['name'] as $key => $value) {
@@ -157,7 +157,7 @@ class RegistroController extends Controller
             $user = new Usuario();
             $user->identificacion = $NumeroIdentificacion;
             $user->correo = $Correo;
-            $user->password = $Contraseña;
+            $user->password = bcrypt($Contraseña);
             $user->save();
 
 
@@ -205,7 +205,7 @@ class RegistroController extends Controller
                 $Registro->save();
             }
         }
-          return redirect('/Registro/Guia')->with('success', 'Gracias por dar respuesta oportuna y apoyar esta iniciativa gremial que nos permitirá obtener por primera vez una base de datos completa, confiable y accesible de los Guías Profesionales de Colombia.');
+          return 1;// redirect('/Registro/Guia')->with('success', 'Gracias por dar respuesta oportuna y apoyar esta iniciativa gremial que nos permitirá obtener por primera vez una base de datos completa, confiable y accesible de los Guías Profesionales de Colombia.');
     }
 
     /**
