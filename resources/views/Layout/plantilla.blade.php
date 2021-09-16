@@ -8,7 +8,7 @@
     <title>Pagina Web</title>
     <link rel="shortcut icon" href="{{ URL::asset('/favicon.ico') }}" type="image/x-icon">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
 </head>
 
@@ -104,7 +104,8 @@
                 <!--Grid column-->
                 <div class="col-lg-4 col-md-6 mb-0 mb-md-0">
                     <p><a href="/terminos" class="text-white">Términos y condiciones</a></p>
-                    <p><a href="/politicas" class="text-white">Políticas y procedimientos para el tratamiento de datos personales</a></p>
+                    <p><a href="/politicas" class="text-white">Políticas y procedimientos para el tratamiento de datos
+                            personales</a></p>
                 </div>
                 <!--Grid column-->
 
@@ -124,4 +125,5 @@
 <script src="{{ asset('js/jquery-3.5.1.slim.min.js') }}"></script>
 <script src="{{ asset('js/popper.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
 </html>
