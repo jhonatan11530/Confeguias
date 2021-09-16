@@ -13,11 +13,10 @@
 </head>
 
 <body>
-    <div class="row" style="width: 100%">
+    <div class="row w-100">
         <div class="col-sm-7">
-            <img class="img-fluid"
-                src="{{ asset('img/fondo.jpg') }}"
-                style="height: 100%;width: 100%;" alt="Error Image">
+            <img class="img-fluid" src="{{ asset('img/fondo.jpg') }}" style="height: 100%;width: 100%;"
+                alt="Error Image">
         </div>
         <div class="col-sm-5">
             <img class="img-fluid mb-3"
@@ -144,7 +143,8 @@
                     <div class="col-sm-12 mb-2">
                         <label>Certificados de Idiomas <span style="color: red">*</span></label><a
                             class="btn btn-primary float-right" id="clickIdioma">+</a>
-                        <input type="text" name="TituloCertificadosIdiomas[]" class="form-control mb-2" placeholder="Titulo del Certificado">
+                        <input type="text" name="TituloCertificadosIdiomas[]" class="form-control mb-2"
+                            placeholder="Titulo del Certificado">
                         <input type="file" name="CertificadosPDFIdiomas[]" accept="application/pdf"
                             class="form-control mb-3" required>
                         <div id="Idiomas"></div>
@@ -152,7 +152,8 @@
                     <div class="col-sm-12 mb-2">
                         <label>Certificados Academicos <span style="color: red">*</span></label><a
                             class="btn btn-primary float-right" id="clickAcademicos">+</a>
-                        <input type="text" name="TituloCertificadosAcademicos[]" class="form-control mb-2" placeholder="Titulo del Certificado">
+                        <input type="text" name="TituloCertificadosAcademicos[]" class="form-control mb-2"
+                            placeholder="Titulo del Certificado">
                         <input type="file" name="CertificadosPDFAcademicos[]" accept="application/pdf"
                             class="form-control mb-3" required>
                         <div id="Academicos"></div>
@@ -160,7 +161,8 @@
                     <div class="col-sm-12 mb-2">
                         <label>Certificados De otros Estudios <span style="color: red">*</span></label><a
                             class="btn btn-primary float-right" id="clickEstudios">+</a>
-                        <input type="text" name="TituloCertificadosEstudios[]" class="form-control mb-2" placeholder="Titulo del Certificado">
+                        <input type="text" name="TituloCertificadosEstudios[]" class="form-control mb-2"
+                            placeholder="Titulo del Certificado">
                         <input type="file" name="CertificadosPDFEstudios[]" accept="application/pdf"
                             class="form-control mb-3" required>
                         <div id="Estudios"></div>
@@ -170,7 +172,7 @@
             </form>
         </div>
     </div>
-
+    
     <!---- MODAL BIENVENIDO ---->
     <div class="modal fade" id="PresentacionModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
