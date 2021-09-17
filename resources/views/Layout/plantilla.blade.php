@@ -9,7 +9,9 @@
     <link rel="shortcut icon" href="{{ URL::asset('/favicon.ico') }}" type="image/x-icon">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
+    @yield('style')
 </head>
 
 <body>
@@ -34,7 +36,7 @@
                     <a class="nav-link" href="/contacto">Contacto</a>
                 </li>
                 <li class="nav-item mr-sm-2">
-                    <a class="nav-link" href="/contacto">Denuncie</a>
+                    <a class="nav-link" href="/denuncia">Denuncie</a>
                 </li>
                 <li class="nav-item mr-sm-2">
                     <a class="btn btn-primary" href="/Registro/Guia" target="_blank">AFILIATE</a>
@@ -122,8 +124,45 @@
         <!-- Copyright -->
     </footer>
 </body>
+@yield('script')
 <script src="{{ asset('js/jquery-3.5.1.slim.min.js') }}"></script>
 <script src="{{ asset('js/popper.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+<script>
+    $(document).ready(function () {
+        
+    $("#submit").click(function (e) { 
+        alert(new FormData($("form#Denuncia")[0]));
+        console.log($("form#Denuncia")[0])
+        /*
+        $.ajax({
+            type: "post",
+            url: "url",
+            data: new FormData($("form#Denuncia")[0]),
+            dataType: "dataType",
+            success: function (response) {
+                
+            }
+        });
+        */
+    });
+    $('select#Prueba').on('change', function() {
+        if (this.value =="SI") {
+            var asignar = `<div class="col-sm-12">
+                        <label>Descripcion de los Hechos</label>
+                        <textarea name="" class="form-control" rows="5"></textarea>
+                        </div>
+                        <div class="col-sm-12">
+                        <label>Adjuntar Pruebas</label>
+                        <input type="file" name="" class="form-control">
+                        </div>`;
+                $("#Mostrar").html(asignar);
+        }else{
+            $("#Mostrar").empty();
+        }
+    });
+});
+</script>
+
 
 </html>

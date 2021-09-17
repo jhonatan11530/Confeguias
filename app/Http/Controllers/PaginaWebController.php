@@ -30,4 +30,12 @@ class PaginaWebController extends Controller
     {
         return view('PaginaWeb.politicas');
     }
+    function PaginaWebBeneficios()
+    {
+        return view('PaginaWeb.beneficios');
+    }
+    function PaginaWebDenuncia()
+    {
+        return view('PaginaWeb.denuncia');
+    }
 }

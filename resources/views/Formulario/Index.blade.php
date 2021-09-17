@@ -23,7 +23,7 @@
                 src="https://imagekit.androidphoria.com/wp-content/uploads/como-buscar-una-imagen-en-facebook-con-una-foto.jpg"
                 alt="Error Image" style="width: 100%;height: 150px;">
             <hr>
-            <form class="container" id="formulario" enctype="multipart/form-data" action="">
+            <form class="container" enctype="multipart/form-data" action="">
                 {{ csrf_field() }}
                 <p class="text-center">DATOS PERSONALES</p>
                 <div class="row">
