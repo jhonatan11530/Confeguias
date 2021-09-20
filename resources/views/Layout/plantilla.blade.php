@@ -39,7 +39,7 @@
                     <a class="nav-link" href="/denuncia">Denuncie</a>
                 </li>
                 <li class="nav-item mr-sm-2">
-                    <a class="btn btn-primary" href="/Registro/Guia" target="_blank">AFILIATE</a>
+                    <a class="btn btn-primary" href="/Registro/Guia" target="_blank">Regístrate</a>
                 </li>
                 <li class="nav-item">
                     <a class="btn btn-primary" href="/Sistema/login" target="_blank">Iniciar sesión</a>
@@ -49,6 +49,27 @@
     </nav>
 
     @yield('contenido')
+
+    <!---- MODAL REGISTRO ---->
+    <div class="modal fade" id="ErrorDenuncia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Error Los Datos Estas Vacios !!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Para Enviar la denuncia verifique si los campos estan vacios.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <footer class="bg-primary text-white text-center text-lg-start">
         <!-- Grid container -->
         <div class="container p-4">
@@ -56,32 +77,33 @@
             <div class="row">
 
                 <!--Grid column-->
-                <div class="col-lg-3 col-md-12 mb-4 mb-md-0">
-                    <h6 class="text-uppercase mb-3"><strong>Dirección</strong></h6>
+                <div class="col-lg-3 col-md-4 mb-1 mb-md-0">
+                    <h6 class="text-uppercase"><strong>Dirección</strong></h6>
                     <p>### ### ####</p>
-                    <h6 class="text-uppercase mb-2"><strong>Horario atención</strong></h6>
-                    <span style="color: red">Lunes a Jueves:</span>
-                    <p>### ### ####</p>
-                </div>
-                <!--Grid column-->
-
-                <!--Grid column-->
-                <div class="col-lg-5 col-md-6 mb-4 mb-md-0">
-                    <h6 class="text-uppercase mb-3"><strong>Email</strong></h6>
-                    <p>### ### ####</p>
-                    <h6 class="text-uppercase mb-3"><strong>Notificaciones Judiciales</strong></h6>
+                    <h6 class="text-uppercase"><strong>Horario atención</strong></h6>
+                    <strong style="color: red">Lunes a Jueves:</strong>
                     <p>### ### ####</p>
                 </div>
                 <!--Grid column-->
 
                 <!--Grid column-->
-                <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
-                    <h6 class="text-uppercase mb-3"><strong>Llámanos</strong></h6>
+                <div class="col-lg-5 col-md-4 mb-1 mb-md-0">
+                    <h6 class="text-uppercase"><strong>Email</strong></h6>
+                    <p>### ### ####</p>
+                    <h6 class="text-uppercase"><strong>Notificaciones Judiciales</strong></h6>
+                    <p>### ### ####</p>
+                </div>
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-lg-4 col-md-4 mb-1 mb-md-0">
+                    <h6 class="text-uppercase"><strong>Llámanos</strong></h6>
                     <p>(+57) ### ### ####</p>
-                    <h6 class="text-uppercase mb-3"><strong>Linea Gratuita:</strong></h6>
+                    <h6 class="text-uppercase"><strong>Linea Gratuita:</strong></h6>
                     <p>(+57) ### ### ####</p>
                 </div>
                 <!--Grid column-->
+
             </div>
             <hr>
             <div class="row">
@@ -98,8 +120,8 @@
 
                 <!--Grid column-->
                 <div class="col-lg-5 col-md-6 mb-0 mb-md-0">
-                    <p>### ### ####</p>
-                    <p>### ### ####</p>
+                    <p><a href="" class="text-white">## #### ####</a></p>
+                    <p><a href="" class="text-white">## #### ####</a></p>
                 </div>
                 <!--Grid column-->
 
@@ -125,42 +147,44 @@
     </footer>
 </body>
 @yield('script')
-<script src="{{ asset('js/jquery-3.5.1.slim.min.js') }}"></script>
+<script src="{{ asset('js/jquery-3.5.1.js') }}"></script>
 <script src="{{ asset('js/popper.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 <script>
     $(document).ready(function () {
         
-    $("#submit").click(function (e) { 
-        alert(new FormData($("form#Denuncia")[0]));
-        console.log($("form#Denuncia")[0])
-        /*
-        $.ajax({
-            type: "post",
-            url: "url",
-            data: new FormData($("form#Denuncia")[0]),
-            dataType: "dataType",
-            success: function (response) {
-                
+        $("#submit").click(function (e) { 
+            $.ajax({
+                type: "POST",
+                url: "/Enviar/Denuncia",
+                data: new FormData($("form#Denuncia")[0]),
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    alert("Su Denuncia se Envio Correctamente !!");
+                    location.reload();
+                },
+                error:function(){
+                    $("#ErrorDenuncia").modal("show")
+                }
+            });
+        });
+        $('select#Pruebas').on('change', function() {
+            if (this.value =="SI") {
+                var asignar = `<div class="col-sm-12">
+                            <label>Descripcion de los Hechos <span style="color:red">*</span></label>
+                            <textarea name="DescripcionHechos" class="form-control" rows="5" required></textarea>
+                            </div>
+                            <div class="col-sm-12">
+                            <label>Adjuntar Pruebas <span style="color:red">*</span></label>
+                            <input type="file" name="AdjuntarPruebas[]" multiple='multiple' class="form-control" required>
+                            </div>`;
+                    $("#Mostrar").html(asignar);
+            }else{
+                $("#Mostrar").empty();
             }
         });
-        */
-    });
-    $('select#Prueba').on('change', function() {
-        if (this.value =="SI") {
-            var asignar = `<div class="col-sm-12">
-                        <label>Descripcion de los Hechos</label>
-                        <textarea name="" class="form-control" rows="5"></textarea>
-                        </div>
-                        <div class="col-sm-12">
-                        <label>Adjuntar Pruebas</label>
-                        <input type="file" name="" class="form-control">
-                        </div>`;
-                $("#Mostrar").html(asignar);
-        }else{
-            $("#Mostrar").empty();
-        }
-    });
 });
 </script>
 

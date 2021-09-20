@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-sm-12">
             <h2 class="text-center mb-4" style="color: blue;"><strong>¿QUIERES ENVIARNOS UN MENSAJE?</strong></h2>
-            <form method="POST" action="/Enviar/Response">
+            <form method="POST" action="/Enviar/Contacto">
                 {{ csrf_field() }}
                 <div class="row">
                     <div class="col-sm-12 mb-2">

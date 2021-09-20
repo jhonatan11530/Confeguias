@@ -10,18 +10,17 @@
     <script src="{{ asset('js/jquery-3.5.1.js') }}"></script>
     <script src="{{ asset('js/popper.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
 <body>
     <div class="row w-100">
         <div class="col-sm-7">
-            <img class="img-fluid" src="{{ asset('img/fondo.jpg') }}" style="height: 100%;width: 100%;"
+            <img class="img-fluid" src="{{ asset('img/fondo.jpg') }}" style="width: 100%;height: 100%;"
                 alt="Error Image">
         </div>
         <div class="col-sm-5">
-            <img class="img-fluid mb-3"
-                src="https://imagekit.androidphoria.com/wp-content/uploads/como-buscar-una-imagen-en-facebook-con-una-foto.jpg"
-                alt="Error Image" style="width: 100%;height: 150px;">
+            <img class="img-fluid mb-3" src="{{ asset('img/confeguias.png') }}" alt="Error Image" style="width: 100%;">
             <hr>
             <form class="container" enctype="multipart/form-data" action="">
                 {{ csrf_field() }}
@@ -71,8 +70,19 @@
                         <input type="text" name="DirreccionResidencia" class="form-control mb-2" required>
                     </div>
                     <div class="col-sm-6">
-                        <label>Nomenclatura <span style="color: red">*</span></label>
-                        <input type="text" name="Nomenclatura" class="form-control mb-2" required>
+                        <label>Departamento <span style="color: red">*</span></label>
+                        <select name="departamento" id="depart" class="form-control">
+                            <option value="" selected disabled>Seleccione...</option>
+                            @foreach ($Departamento as $key => $val)
+                            <option value="{{$val->departamento}}">{{$val->departamento}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="col-sm-6">
+                        <label>Ciudad <span style="color: red">*</span></label>
+                        <select id="ciudad" name="ciudad" class="form-control" required>
+                            <option value="" selected disabled>Seleccione...</option>
+                        </select>
                     </div>
                     <div class="col-sm-6">
                         <label>Celular <span style="color: red">*</span></label>
@@ -104,7 +114,7 @@
                         <input type="number" min="0" name="TarjetaProfesional" class="form-control mb-3" required>
                     </div>
                     <div class="col-sm-6">
-                        <label>Adjunto Tarjeta Profesional PDF</label>
+                        <label>Adjunto Tarjeta Profesional PDF <span style="color: red">*</span></label>
                         <input type="file" name="AdjuntoTarjetaProfesional" accept="application/pdf"
                             class="form-control mb-3" required>
                     </div>
@@ -141,30 +151,30 @@
                 <p class="text-center">DATOS DE ESTUDIOS</p>
                 <div class="row">
                     <div class="col-sm-12 mb-2">
-                        <label>Certificados de Idiomas <span style="color: red">*</span></label><a
+                        <label>Certificados de Idiomas</label><a
                             class="btn btn-primary float-right" id="clickIdioma">+</a>
                         <input type="text" name="TituloCertificadosIdiomas[]" class="form-control mb-2"
                             placeholder="Titulo del Certificado">
                         <input type="file" name="CertificadosPDFIdiomas[]" accept="application/pdf"
-                            class="form-control mb-3" required>
+                            class="form-control mb-3">
                         <div id="Idiomas"></div>
                     </div>
                     <div class="col-sm-12 mb-2">
-                        <label>Certificados Academicos <span style="color: red">*</span></label><a
+                        <label>Certificados Academicos</label><a
                             class="btn btn-primary float-right" id="clickAcademicos">+</a>
                         <input type="text" name="TituloCertificadosAcademicos[]" class="form-control mb-2"
                             placeholder="Titulo del Certificado">
                         <input type="file" name="CertificadosPDFAcademicos[]" accept="application/pdf"
-                            class="form-control mb-3" required>
+                            class="form-control mb-3">
                         <div id="Academicos"></div>
                     </div>
                     <div class="col-sm-12 mb-2">
-                        <label>Certificados De otros Estudios <span style="color: red">*</span></label><a
+                        <label>Certificados De otros Estudios</label><a
                             class="btn btn-primary float-right" id="clickEstudios">+</a>
                         <input type="text" name="TituloCertificadosEstudios[]" class="form-control mb-2"
                             placeholder="Titulo del Certificado">
                         <input type="file" name="CertificadosPDFEstudios[]" accept="application/pdf"
-                            class="form-control mb-3" required>
+                            class="form-control mb-3">
                         <div id="Estudios"></div>
                     </div>
                 </div>
@@ -263,6 +273,20 @@
             location.reload();
         }
         $(document).ready(function() {
+            $("#PresentacionModal").modal("show");
+                $('select#depart').change(function(){
+                $("#ciudad").children().remove();
+                var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+                var cursos = $("#ciudad");
+                    $.ajax({
+                        url:'/Registro/filtrar',
+                        type:'post',
+                        data:{_token: CSRF_TOKEN,departamento:$("#depart").val()},
+                        success:function(data){
+                        cursos.append(data);
+                        }
+                    })
+                })
                 $(document).on('click','#submit',function() {
                     $.ajax({
                         type: "POST",
@@ -288,12 +312,12 @@
                 if($(this).val() == 'SI'){
                 var asignar = `<div class='row'>
                 <div class='col-sm-6'>
-                    <label>Nombre de la Asociación</label>
-                    <input type="text" name="NombreAsociacion" class="form-control mb-2">
+                    <label>Nombre de la Asociación <span style="color: red">*</span></label>
+                    <input type="text" name="NombreAsociacion" class="form-control mb-2" required>
                 </div>
                 <div class='col-sm-6'>
-                    <label>Adjunto Certificado Asociación PDF</label>
-                    <input type="file" name="CertificadoAsociacion" accept="application/pdf" class="form-control">
+                    <label>Adjunto Certificado Asociación PDF <span style="color: red">*</span></label>
+                    <input type="file" name="CertificadoAsociacion" accept="application/pdf" class="form-control" required>
                 </div>
                 </div>`;
                 $("#GUIA").html(asignar);

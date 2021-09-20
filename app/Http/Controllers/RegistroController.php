@@ -26,7 +26,8 @@ class RegistroController extends Controller
      */
     public function create()
     {
-        return view('formulario.index');
+        $Departamento = DB::select("SELECT DISTINCT departamento FROM ciudades ORDER BY departamento ASC");
+        return view('formulario.index')->with('Departamento', $Departamento);
     }
 
     /**
@@ -72,7 +73,8 @@ class RegistroController extends Controller
             $Registro->NumeroIdentificacion = $NumeroIdentificacion;
             $Registro->FechaExpedicion = $FechaExpedicion;
             $Registro->DirreccionResidencia = $DirreccionResidencia;
-            $Registro->Nomenclatura = $Nomenclatura;
+            $Registro->Departamento = $departamento;
+            $Registro->Ciudad = $ciudad;
             $Registro->Celular = $Celular;
             $Registro->TelefonoFijo = $TelefonoFijo;
             $Registro->TarjetaProfesional = $TarjetaProfesional;
@@ -91,47 +93,53 @@ class RegistroController extends Controller
             $user->password = bcrypt($Contraseña);
             $user->save();
 
-            foreach ($_FILES['CertificadosPDFIdiomas']['name'] as $key => $value) {
-                $ruta_arch5[$key] = $_FILES['CertificadosPDFIdiomas']['tmp_name'][$key];
-                $nombre_arch5[$key] = $_FILES['CertificadosPDFIdiomas']['name'][$key];
-                $nueva_ruta5[$key] = "file-registro/" . $nombre_arch5[$key];
-                Move_uploaded_file($ruta_arch5[$key], $nueva_ruta5[$key]);
+            if ($_FILES['CertificadosPDFIdiomas']['name']) {
+                foreach ($_FILES['CertificadosPDFIdiomas']['name'] as $key => $value) {
+                    $ruta_arch5[$key] = $_FILES['CertificadosPDFIdiomas']['tmp_name'][$key];
+                    $nombre_arch5[$key] = $_FILES['CertificadosPDFIdiomas']['name'][$key];
+                    $nueva_ruta5[$key] = "file-registro/" . $nombre_arch5[$key];
+                    Move_uploaded_file($ruta_arch5[$key], $nueva_ruta5[$key]);
 
-                // CERTIFICADOS DE IDIOMAS
-                $Registro = new Documentos();
-                $Registro->usuario = $NumeroIdentificacion;
-                $Registro->titulo = $TituloCertificadosIdiomas[$key];
-                $Registro->categoria = 'Certificado de Idiomas';
-                $Registro->documento = $nueva_ruta5[$key];
-                $Registro->save();
+                    // CERTIFICADOS DE IDIOMAS
+                    $Registro = new Documentos();
+                    $Registro->usuario = $NumeroIdentificacion;
+                    $Registro->titulo = $TituloCertificadosIdiomas[$key];
+                    $Registro->categoria = 'Certificado de Idiomas';
+                    $Registro->documento = $nueva_ruta5[$key];
+                    $Registro->save();
+                }
             }
-            foreach ($_FILES['CertificadosPDFAcademicos']['name'] as $key => $value) {
-                $ruta_arch6[$key] = $_FILES['CertificadosPDFAcademicos']['tmp_name'][$key];
-                $nombre_arch6[$key] = $_FILES['CertificadosPDFAcademicos']['name'][$key];
-                $nueva_ruta6[$key] = "file-registro/" . $nombre_arch6[$key];
-                Move_uploaded_file($ruta_arch6[$key], $nueva_ruta6[$key]);
+            if ($_FILES['CertificadosPDFAcademicos']['name']) {
+                foreach ($_FILES['CertificadosPDFAcademicos']['name'] as $key => $value) {
+                    $ruta_arch6[$key] = $_FILES['CertificadosPDFAcademicos']['tmp_name'][$key];
+                    $nombre_arch6[$key] = $_FILES['CertificadosPDFAcademicos']['name'][$key];
+                    $nueva_ruta6[$key] = "file-registro/" . $nombre_arch6[$key];
+                    Move_uploaded_file($ruta_arch6[$key], $nueva_ruta6[$key]);
 
-                // CERTIFICADOS DE ACADEMICOS
-                $Registro = new Documentos();
-                $Registro->usuario = $NumeroIdentificacion;
-                $Registro->titulo = $TituloCertificadosAcademicos[$key];
-                $Registro->categoria = 'Certificado Academicos';
-                $Registro->documento = $nueva_ruta6[$key];
-                $Registro->save();
+                    // CERTIFICADOS DE ACADEMICOS
+                    $Registro = new Documentos();
+                    $Registro->usuario = $NumeroIdentificacion;
+                    $Registro->titulo = $TituloCertificadosAcademicos[$key];
+                    $Registro->categoria = 'Certificado Academicos';
+                    $Registro->documento = $nueva_ruta6[$key];
+                    $Registro->save();
+                }
             }
-            foreach ($_FILES['CertificadosPDFEstudios']['name'] as $key => $value) {
-                $ruta_arch7[$key] = $_FILES['CertificadosPDFEstudios']['tmp_name'][$key];
-                $nombre_arch7[$key] = $_FILES['CertificadosPDFEstudios']['name'][$key];
-                $nueva_ruta7[$key] = "file-registro/" . $nombre_arch7[$key];
-                Move_uploaded_file($ruta_arch7[$key], $nueva_ruta7[$key]);
+            if ($_FILES['CertificadosPDFEstudios']['name']) {
+                foreach ($_FILES['CertificadosPDFEstudios']['name'] as $key => $value) {
+                    $ruta_arch7[$key] = $_FILES['CertificadosPDFEstudios']['tmp_name'][$key];
+                    $nombre_arch7[$key] = $_FILES['CertificadosPDFEstudios']['name'][$key];
+                    $nueva_ruta7[$key] = "file-registro/" . $nombre_arch7[$key];
+                    Move_uploaded_file($ruta_arch7[$key], $nueva_ruta7[$key]);
 
-                // CERTIFICADOS DE ESTUDIOS
-                $Registro = new Documentos();
-                $Registro->usuario = $NumeroIdentificacion;
-                $Registro->titulo = $TituloCertificadosEstudios[$key];
-                $Registro->categoria = 'Certificado de Estudios';
-                $Registro->documento = $nueva_ruta7[$key];
-                $Registro->save();
+                    // CERTIFICADOS DE ESTUDIOS
+                    $Registro = new Documentos();
+                    $Registro->usuario = $NumeroIdentificacion;
+                    $Registro->titulo = $TituloCertificadosEstudios[$key];
+                    $Registro->categoria = 'Certificado de Estudios';
+                    $Registro->documento = $nueva_ruta7[$key];
+                    $Registro->save();
+                }
             }
         } else {
 
@@ -143,7 +151,8 @@ class RegistroController extends Controller
             $Registro->NumeroIdentificacion = $NumeroIdentificacion;
             $Registro->FechaExpedicion = $FechaExpedicion;
             $Registro->DirreccionResidencia = $DirreccionResidencia;
-            $Registro->Nomenclatura = $Nomenclatura;
+            $Registro->Departamento = $departamento;
+            $Registro->Ciudad = $ciudad;
             $Registro->Celular = $Celular;
             $Registro->TelefonoFijo = $TelefonoFijo;
             $Registro->TarjetaProfesional = $TarjetaProfesional;
@@ -160,52 +169,71 @@ class RegistroController extends Controller
             $user->password = bcrypt($Contraseña);
             $user->save();
 
+            if ($_FILES['CertificadosPDFIdiomas']['name']) {
 
-            foreach ($_FILES['CertificadosPDFIdiomas']['name'] as $key => $value) {
+                foreach ($_FILES['CertificadosPDFIdiomas']['name'] as $key => $value) {
 
-                $ruta_arch5[$key] = $_FILES['CertificadosPDFIdiomas']['tmp_name'][$key];
-                $nombre_arch5[$key] = $_FILES['CertificadosPDFIdiomas']['name'][$key];
-                $nueva_ruta5[$key] = "file-registro/" . $nombre_arch5[$key];
-                Move_uploaded_file($ruta_arch5[$key], $nueva_ruta5[$key]);
+                    $ruta_arch5[$key] = $_FILES['CertificadosPDFIdiomas']['tmp_name'][$key];
+                    $nombre_arch5[$key] = $_FILES['CertificadosPDFIdiomas']['name'][$key];
+                    $nueva_ruta5[$key] = "file-registro/" . $nombre_arch5[$key];
+                    Move_uploaded_file($ruta_arch5[$key], $nueva_ruta5[$key]);
 
-                // CERTIFICADOS DE IDIOMAS
-                $Registro = new Documentos();
-                $Registro->usuario = $NumeroIdentificacion;
-                $Registro->titulo = $TituloCertificadosIdiomas[$key];
-                $Registro->categoria = 'Certificado de Idiomas';
-                $Registro->documento = $nueva_ruta5[$key];
-                $Registro->save();
+                    // CERTIFICADOS DE IDIOMAS
+                    $Registro = new Documentos();
+                    $Registro->usuario = $NumeroIdentificacion;
+                    $Registro->titulo = $TituloCertificadosIdiomas[$key];
+                    $Registro->categoria = 'Certificado de Idiomas';
+                    $Registro->documento = $nueva_ruta5[$key];
+                    $Registro->save();
+                }
             }
-            foreach ($_FILES['CertificadosPDFAcademicos']['name'] as $key => $value) {
-                $ruta_arch6[$key] = $_FILES['CertificadosPDFAcademicos']['tmp_name'][$key];
-                $nombre_arch6[$key] = $_FILES['CertificadosPDFAcademicos']['name'][$key];
-                $nueva_ruta6[$key] = "file-registro/" . $nombre_arch6[$key];
-                Move_uploaded_file($ruta_arch6[$key], $nueva_ruta6[$key]);
+            if ($_FILES['CertificadosPDFAcademicos']['name']) {
 
-                // CERTIFICADOS DE ACADEMICOS
-                $Registro = new Documentos();
-                $Registro->usuario = $NumeroIdentificacion;
-                $Registro->titulo = $TituloCertificadosAcademicos[$key];
-                $Registro->categoria = 'Certificado Academicos';
-                $Registro->documento = $nueva_ruta6[$key];
-                $Registro->save();
+                foreach ($_FILES['CertificadosPDFAcademicos']['name'] as $key => $value) {
+                    $ruta_arch6[$key] = $_FILES['CertificadosPDFAcademicos']['tmp_name'][$key];
+                    $nombre_arch6[$key] = $_FILES['CertificadosPDFAcademicos']['name'][$key];
+                    $nueva_ruta6[$key] = "file-registro/" . $nombre_arch6[$key];
+                    Move_uploaded_file($ruta_arch6[$key], $nueva_ruta6[$key]);
+
+                    // CERTIFICADOS DE ACADEMICOS
+                    $Registro = new Documentos();
+                    $Registro->usuario = $NumeroIdentificacion;
+                    $Registro->titulo = $TituloCertificadosAcademicos[$key];
+                    $Registro->categoria = 'Certificado Academicos';
+                    $Registro->documento = $nueva_ruta6[$key];
+                    $Registro->save();
+                }
             }
-            foreach ($_FILES['CertificadosPDFEstudios']['name'] as $key => $value) {
-                $ruta_arch7[$key] = $_FILES['CertificadosPDFEstudios']['tmp_name'][$key];
-                $nombre_arch7[$key] = $_FILES['CertificadosPDFEstudios']['name'][$key];
-                $nueva_ruta7[$key] = "file-registro/" . $nombre_arch7[$key];
-                Move_uploaded_file($ruta_arch7[$key], $nueva_ruta7[$key]);
+            if ($_FILES['CertificadosPDFEstudios']['name']) {
 
-                // CERTIFICADOS DE ESTUDIOS
-                $Registro = new Documentos();
-                $Registro->usuario = $NumeroIdentificacion;
-                $Registro->titulo = $TituloCertificadosEstudios[$key];
-                $Registro->categoria = 'Certificado de Estudios';
-                $Registro->documento = $nueva_ruta7[$key];
-                $Registro->save();
+                foreach ($_FILES['CertificadosPDFEstudios']['name'] as $key => $value) {
+                    $ruta_arch7[$key] = $_FILES['CertificadosPDFEstudios']['tmp_name'][$key];
+                    $nombre_arch7[$key] = $_FILES['CertificadosPDFEstudios']['name'][$key];
+                    $nueva_ruta7[$key] = "file-registro/" . $nombre_arch7[$key];
+                    Move_uploaded_file($ruta_arch7[$key], $nueva_ruta7[$key]);
+
+                    // CERTIFICADOS DE ESTUDIOS
+                    $Registro = new Documentos();
+                    $Registro->usuario = $NumeroIdentificacion;
+                    $Registro->titulo = $TituloCertificadosEstudios[$key];
+                    $Registro->categoria = 'Certificado de Estudios';
+                    $Registro->documento = $nueva_ruta7[$key];
+                    $Registro->save();
+                }
             }
         }
-          return 1;// redirect('/Registro/Guia')->with('success', 'Gracias por dar respuesta oportuna y apoyar esta iniciativa gremial que nos permitirá obtener por primera vez una base de datos completa, confiable y accesible de los Guías Profesionales de Colombia.');
+        return 1; // redirect('/Registro/Guia')->with('success', 'Gracias por dar respuesta oportuna y apoyar esta iniciativa gremial que nos permitirá obtener por primera vez una base de datos completa, confiable y accesible de los Guías Profesionales de Colombia.');
+    }
+    public function filtrar(Request $request)
+    {
+        $request->ciudad;
+        $html = null;
+        $ciudad = DB::select("SELECT ciudad FROM ciudades WHERE departamento='$request->departamento' ORDER BY ciudad ASC");
+        foreach ($ciudad as $key => $value) {
+            $selected = ($value->ciudad == $request->ciudad) ? 'selected="selected"' : '';
+            $html .= '<option value="' . $value->ciudad . '"  ' . $selected . '>' . $value->ciudad . '</option>';
+        }
+        return $html;
     }
 
     /**

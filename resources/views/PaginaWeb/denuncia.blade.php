@@ -49,15 +49,15 @@
     <div class="row">
         <div class="col-sm-12">
             <form id="Denuncia" enctype="multipart/form-data" action="">
-                {{ csrf_field() }}
+               {{ csrf_field() }}
                 <div class="row">
                     <div class="col-sm-12 mb-2">
-                        <label>Nombre de Denunciante</label>
-                        <input type="text" name="" placeholder="Nombre Completo" class="form-control">
+                        <label>Nombre de Denunciante <span style="color:red">*</span></label>
+                        <input type="text" name="NombreDenunciante" placeholder="Nombre Completo" class="form-control" required>
                     </div>
                     <div class="col-sm-4 mb-2">
-                        <label>Tipo Documento</label>
-                        <select name="" class="form-control">
+                        <label>Tipo Documento <span style="color:red">*</span></label>
+                        <select name="TipoDocumento" class="form-control" required>
                             <option value="" selected disabled>Seleccione</option>
                             <option value="Registro civil">Registro civil(RC)</option>
                             <option value="Targeta de identidad">Tarjeta de identidad(TI)</option>
@@ -72,33 +72,33 @@
                         </select>
                     </div>
                     <div class="col-sm-4 mb-2">
-                        <label>Numero Documento</label>
-                        <input type="number" name="" min="0" class="form-control">
+                        <label>Numero Documento <span style="color:red">*</span></label>
+                        <input type="number" name="NumeroDocumento" min="0" class="form-control" required>
                     </div>
                     <div class="col-sm-4 mb-2">
-                        <label>N° Tarjeta Profesional</label>
-                        <input type="number" name="" min="0" placeholder="solo numero sin digito de verificacion"
-                            class="form-control">
+                        <label>N° Tarjeta Profesional <span style="color:red">*</span></label>
+                        <input type="number" name="NTarjetaProfesional" min="0" maxlength="10" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                            placeholder="solo numero sin digito de verificacion" class="form-control" required>
                     </div>
                     <div class="col-sm-6 mb-2">
-                        <label>Correo Eléctronico</label>
-                        <input type="email" name="" class="form-control">
+                        <label>Correo Eléctronico <span style="color:red">*</span></label>
+                        <input type="email" name="Correo" class="form-control" required>
                     </div>
                     <div class="col-sm-6 mb-2">
-                        <label>Teléfono o Celular</label>
-                        <input type="number" name="" min="0" class="form-control">
+                        <label>Teléfono o Celular <span style="color:red">*</span></label>
+                        <input type="number" name="Telefono" min="0" maxlength="10" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" class="form-control" required>
                     </div>
                     <div class="col-sm-6 mb-2">
-                        <label>Titulo de su Queja o Denuncia</label>
-                        <input type="text" name="" class="form-control">
+                        <label>Titulo de su Queja o Denuncia <span style="color:red">*</span></label>
+                        <input type="text" name="TituloQueja" class="form-control" required>
                     </div>
                     <div class="col-sm-12 mb-2">
-                        <label>Descripcion Queja o Denuncia</label>
-                        <textarea name="" class="form-control" rows="5"></textarea>
+                        <label>Descripcion Queja o Denuncia <span style="color:red">*</span></label>
+                        <textarea name="DescripcionQueja" class="form-control" rows="5"></textarea>
                     </div>
                     <div class="col-sm-4 mb-5">
-                        <label>¿Posee pruebas de los hechos que acaba de Escribir?</label>
-                        <select id="Prueba" name="Prueba" class="form-control">
+                        <label>¿Posee pruebas de los hechos que acaba de Escribir? <span style="color:red">*</span></label>
+                        <select id="Pruebas" name="PoseePrueba" class="form-control" required>
                             <option value="" selected disabled>Seleccione</option>
                             <option value="SI">SI</option>
                             <option value="NO">NO</option>
