@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Registro;
 use App\Usuario;
 use App\Documentos;
+use App\Mail\RegistroReceived;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class RegistroController extends Controller
 {
@@ -85,16 +87,20 @@ class RegistroController extends Controller
             $Registro->Guia = $Guia;
             $Registro->NombreAsociacion = $NombreAsociacion;
             $Registro->CertificadoAsociacion = $nueva_ruta4;
+            $Registro->Terminos = $AceptarTerminos;
             $Registro->save();
-
+/*
+            $registros = new Correos();
+            $registros->Mail($Nombre, $Apellido, $Correo, $Contraseña);
+*/
             $user = new Usuario();
             $user->identificacion = $NumeroIdentificacion;
             $user->correo = $Correo;
             $user->password = bcrypt($Contraseña);
             $user->save();
 
-            if ($_FILES['CertificadosPDFIdiomas']['name']) {
-                foreach ($_FILES['CertificadosPDFIdiomas']['name'] as $key => $value) {
+            foreach ($_FILES['CertificadosPDFIdiomas']['name'] as $key => $value) {
+                if ($TituloCertificadosIdiomas[$key]) {
                     $ruta_arch5[$key] = $_FILES['CertificadosPDFIdiomas']['tmp_name'][$key];
                     $nombre_arch5[$key] = $_FILES['CertificadosPDFIdiomas']['name'][$key];
                     $nueva_ruta5[$key] = "file-registro/" . $nombre_arch5[$key];
@@ -109,8 +115,9 @@ class RegistroController extends Controller
                     $Registro->save();
                 }
             }
-            if ($_FILES['CertificadosPDFAcademicos']['name']) {
-                foreach ($_FILES['CertificadosPDFAcademicos']['name'] as $key => $value) {
+
+            foreach ($_FILES['CertificadosPDFAcademicos']['name'] as $key => $value) {
+                if ($TituloCertificadosAcademicos[$key]) {
                     $ruta_arch6[$key] = $_FILES['CertificadosPDFAcademicos']['tmp_name'][$key];
                     $nombre_arch6[$key] = $_FILES['CertificadosPDFAcademicos']['name'][$key];
                     $nueva_ruta6[$key] = "file-registro/" . $nombre_arch6[$key];
@@ -125,8 +132,9 @@ class RegistroController extends Controller
                     $Registro->save();
                 }
             }
-            if ($_FILES['CertificadosPDFEstudios']['name']) {
-                foreach ($_FILES['CertificadosPDFEstudios']['name'] as $key => $value) {
+
+            foreach ($_FILES['CertificadosPDFEstudios']['name'] as $key => $value) {
+                if ($TituloCertificadosEstudios[$key]) {
                     $ruta_arch7[$key] = $_FILES['CertificadosPDFEstudios']['tmp_name'][$key];
                     $nombre_arch7[$key] = $_FILES['CertificadosPDFEstudios']['name'][$key];
                     $nueva_ruta7[$key] = "file-registro/" . $nombre_arch7[$key];
@@ -161,6 +169,7 @@ class RegistroController extends Controller
             $Registro->NGuiaRegistro = $NGuiaRegistro;
             $Registro->DocumentoGuiaRegistro = $nueva_ruta3;
             $Registro->Guia = $Guia;
+            $Registro->Terminos = $AceptarTerminos;
             $Registro->save();
 
             $user = new Usuario();
@@ -168,11 +177,14 @@ class RegistroController extends Controller
             $user->correo = $Correo;
             $user->password = bcrypt($Contraseña);
             $user->save();
-
-            if ($_FILES['CertificadosPDFIdiomas']['name']) {
-
-                foreach ($_FILES['CertificadosPDFIdiomas']['name'] as $key => $value) {
-
+/*
+            $mensaje = ['Nombre' => $Nombre, 'Apellido' => $Apellido, 'Correo' => $Correo, 'Contraseña' => $Contraseña];
+            
+            $registros = new Correos();
+            $registros->Mail($mensaje);
+*/
+            foreach ($_FILES['CertificadosPDFIdiomas']['name'] as $key => $value) {
+                if ($TituloCertificadosIdiomas[$key]) {
                     $ruta_arch5[$key] = $_FILES['CertificadosPDFIdiomas']['tmp_name'][$key];
                     $nombre_arch5[$key] = $_FILES['CertificadosPDFIdiomas']['name'][$key];
                     $nueva_ruta5[$key] = "file-registro/" . $nombre_arch5[$key];
@@ -187,9 +199,9 @@ class RegistroController extends Controller
                     $Registro->save();
                 }
             }
-            if ($_FILES['CertificadosPDFAcademicos']['name']) {
 
-                foreach ($_FILES['CertificadosPDFAcademicos']['name'] as $key => $value) {
+            foreach ($_FILES['CertificadosPDFAcademicos']['name'] as $key => $value) {
+                if ($TituloCertificadosAcademicos[$key]) {
                     $ruta_arch6[$key] = $_FILES['CertificadosPDFAcademicos']['tmp_name'][$key];
                     $nombre_arch6[$key] = $_FILES['CertificadosPDFAcademicos']['name'][$key];
                     $nueva_ruta6[$key] = "file-registro/" . $nombre_arch6[$key];
@@ -204,9 +216,9 @@ class RegistroController extends Controller
                     $Registro->save();
                 }
             }
-            if ($_FILES['CertificadosPDFEstudios']['name']) {
 
-                foreach ($_FILES['CertificadosPDFEstudios']['name'] as $key => $value) {
+            foreach ($_FILES['CertificadosPDFEstudios']['name'] as $key => $value) {
+                if ($TituloCertificadosEstudios[$key]) {
                     $ruta_arch7[$key] = $_FILES['CertificadosPDFEstudios']['tmp_name'][$key];
                     $nombre_arch7[$key] = $_FILES['CertificadosPDFEstudios']['name'][$key];
                     $nueva_ruta7[$key] = "file-registro/" . $nombre_arch7[$key];
@@ -222,8 +234,9 @@ class RegistroController extends Controller
                 }
             }
         }
-        return 1; // redirect('/Registro/Guia')->with('success', 'Gracias por dar respuesta oportuna y apoyar esta iniciativa gremial que nos permitirá obtener por primera vez una base de datos completa, confiable y accesible de los Guías Profesionales de Colombia.');
+        return 1;
     }
+
     public function filtrar(Request $request)
     {
         $request->ciudad;
@@ -279,5 +292,12 @@ class RegistroController extends Controller
     public function destroy(Registro $registro)
     {
         //
+    }
+}
+class Correos
+{
+    function Mail($mensaje)
+    {
+        Mail::to($mensaje['Correo'])->send(new RegistroReceived($mensaje));
     }
 }

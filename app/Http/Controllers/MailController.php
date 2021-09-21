@@ -33,22 +33,6 @@ class MailController extends Controller
         ,'NTarjetaProfesional'=>$NTarjetaProfesional,'Correo'=>$Correo,'Telefono'=>$Telefono,'TituloQueja'=>$TituloQueja
         ,'DescripcionQueja'=>$DescripcionQueja);
 
-/*
-         $mensaje= request()->validate([
-            'NombreDenunciante'=>'required',
-            'TipoDocumento'=>'required',
-            'NumeroDocumento'=>'required',
-            'NTarjetaProfesional'=>'required',
-            'Correo'=>'required',
-            'Telefono'=>'required',
-            'TituloQueja'=>'required',
-            'DescripcionQueja'=>'required',
-            'PoseePrueba'=>'',
-            'DescripcionHechos'=>'',
-            'AdjuntarPruebas'=>'nullable|max:2000|mimes:jpeg,png,doc,docs,pdf',
-            ]);
-*/
-
         if ($PoseePrueba == "SI") {
 
             $count = count($_FILES['AdjuntarPruebas']['name']);
