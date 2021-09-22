@@ -35,8 +35,8 @@
                         <input type="text" name="Apellido" placeholder="Apellido" class="form-control mb-2" required>
                     </div>
                     <div class="form-group col-sm-12">
-                        <label>Adjuntar Foto personal PDF<span style="color: red">*</span></label>
-                        <input type="file" name="AdjuntarFoto" accept="application/pdf" class="form-control mb-2"
+                        <label>Adjuntar Foto personal <span style="color: red">*</span></label>
+                        <input type="file" name="AdjuntarFoto" accept="image/jpeg, image/png" class="form-control mb-2"
                             required>
                     </div>
                     <div class="form-group col-sm-6">
@@ -189,7 +189,7 @@
         </div>
     </div>
 
-    <!---- MODAL PROTECCION DE DATOS ---->
+    <!---- MODAL PROTECCION DE DATOS   ---->
     <div class="modal fade" id="ProteccionDatos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-scrollable">
             <div class="modal-content">
@@ -603,7 +603,7 @@
                         processData: false,
                         data: new FormData($("form")[0]),
                         success: function (response) {
-                            $("#RegistroModal").modal("show");
+                           $("#RegistroModal").modal("show");
                             
                         },
                         error:function(){
@@ -623,7 +623,7 @@
                     <input type="text" name="NombreAsociacion" class="form-control mb-2" required>
                 </div>
                 <div class='form-group col-sm-6'>
-                    <label>Adjunto Certificado Asociación PDF <span style="color: red">*</span></label>
+                    <label>Certificado Asociación PDF <span style="color: red">*</span></label>
                     <input type="file" name="CertificadoAsociacion" accept="application/pdf" class="form-control" required>
                 </div>
                 </div>`;

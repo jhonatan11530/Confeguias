@@ -5,10 +5,8 @@ namespace App\Http\Controllers;
 use App\Registro;
 use App\Usuario;
 use App\Documentos;
-use App\Mail\RegistroReceived;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Mail;
 
 class RegistroController extends Controller
 {
@@ -42,6 +40,7 @@ class RegistroController extends Controller
     {
 
         extract($_POST);
+        $uploads_dir = 'file-registro';
 
         $ruta_arch = $_FILES['AdjuntarFoto']['tmp_name'];
         $nombre_arch = $_FILES['AdjuntarFoto']['name'];
@@ -60,12 +59,11 @@ class RegistroController extends Controller
         Move_uploaded_file($ruta_arch3, $nueva_ruta3);
 
         if ($Guia == "SI") {
+
             $ruta_arch4 = $_FILES['CertificadoAsociacion']['tmp_name'];
             $nombre_arch4 = $_FILES['CertificadoAsociacion']['name'];
             $nueva_ruta4 = "file-registro/" . $nombre_arch4;
             Move_uploaded_file($ruta_arch4, $nueva_ruta4);
-        }
-        if ($Guia == "SI") {
 
             $Registro = new Registro();
             $Registro->Nombre = $Nombre;
@@ -89,64 +87,82 @@ class RegistroController extends Controller
             $Registro->CertificadoAsociacion = $nueva_ruta4;
             $Registro->Terminos = $AceptarTerminos;
             $Registro->save();
-/*
-            $registros = new Correos();
-            $registros->Mail($Nombre, $Apellido, $Correo, $Contraseña);
-*/
+
             $user = new Usuario();
             $user->identificacion = $NumeroIdentificacion;
             $user->correo = $Correo;
             $user->password = bcrypt($Contraseña);
             $user->save();
 
-            foreach ($_FILES['CertificadosPDFIdiomas']['name'] as $key => $value) {
-                if ($TituloCertificadosIdiomas[$key]) {
-                    $ruta_arch5[$key] = $_FILES['CertificadosPDFIdiomas']['tmp_name'][$key];
-                    $nombre_arch5[$key] = $_FILES['CertificadosPDFIdiomas']['name'][$key];
-                    $nueva_ruta5[$key] = "file-registro/" . $nombre_arch5[$key];
-                    Move_uploaded_file($ruta_arch5[$key], $nueva_ruta5[$key]);
+            foreach ($_FILES["CertificadosPDFIdiomas"]["error"] as $key => $error) {
+                if ($error == UPLOAD_ERR_OK) {
+                    $tmp_name = $_FILES["CertificadosPDFIdiomas"]["tmp_name"][$key];
+                    $name = basename($_FILES["CertificadosPDFIdiomas"]["name"][$key]);
+                    move_uploaded_file($tmp_name, "$uploads_dir/$name");
 
-                    // CERTIFICADOS DE IDIOMAS
-                    $Registro = new Documentos();
-                    $Registro->usuario = $NumeroIdentificacion;
-                    $Registro->titulo = $TituloCertificadosIdiomas[$key];
-                    $Registro->categoria = 'Certificado de Idiomas';
-                    $Registro->documento = $nueva_ruta5[$key];
-                    $Registro->save();
+                    DB::beginTransaction();
+                    try {
+                        $error = new Documentos();
+                        $error->usuario = $NumeroIdentificacion;
+                        $error->titulo = $TituloCertificadosIdiomas[$key];
+                        $error->categoria = 'Certificado de Idiomas';
+                        $error->documento = "$uploads_dir/$name";
+                        $error->save();
+
+                        DB::commit();
+                        // all good
+                    } catch (\Exception $e) {
+                        DB::rollback();
+                        // something went wrong
+                    }
                 }
             }
 
-            foreach ($_FILES['CertificadosPDFAcademicos']['name'] as $key => $value) {
-                if ($TituloCertificadosAcademicos[$key]) {
-                    $ruta_arch6[$key] = $_FILES['CertificadosPDFAcademicos']['tmp_name'][$key];
-                    $nombre_arch6[$key] = $_FILES['CertificadosPDFAcademicos']['name'][$key];
-                    $nueva_ruta6[$key] = "file-registro/" . $nombre_arch6[$key];
-                    Move_uploaded_file($ruta_arch6[$key], $nueva_ruta6[$key]);
+            foreach ($_FILES["CertificadosPDFAcademicos"]["error"] as $key => $error) {
+                if ($error == UPLOAD_ERR_OK) {
+                    $tmp_name = $_FILES["CertificadosPDFAcademicos"]["tmp_name"][$key];
+                    $name = basename($_FILES["CertificadosPDFAcademicos"]["name"][$key]);
+                    move_uploaded_file($tmp_name, "$uploads_dir/$name");
 
-                    // CERTIFICADOS DE ACADEMICOS
-                    $Registro = new Documentos();
-                    $Registro->usuario = $NumeroIdentificacion;
-                    $Registro->titulo = $TituloCertificadosAcademicos[$key];
-                    $Registro->categoria = 'Certificado Academicos';
-                    $Registro->documento = $nueva_ruta6[$key];
-                    $Registro->save();
+                    DB::beginTransaction();
+                    try {
+                        // CERTIFICADOS DE ACADEMICOS
+                        $Registro = new Documentos();
+                        $Registro->usuario = $NumeroIdentificacion;
+                        $Registro->titulo = $TituloCertificadosAcademicos[$key];
+                        $Registro->categoria = 'Certificado Academicos';
+                        $Registro->documento = "$uploads_dir/$name";
+                        $Registro->save();
+                        DB::commit();
+                        // all good
+                    } catch (\Exception $e) {
+                        DB::rollback();
+                        // something went wrong
+                    }
                 }
             }
 
-            foreach ($_FILES['CertificadosPDFEstudios']['name'] as $key => $value) {
-                if ($TituloCertificadosEstudios[$key]) {
-                    $ruta_arch7[$key] = $_FILES['CertificadosPDFEstudios']['tmp_name'][$key];
-                    $nombre_arch7[$key] = $_FILES['CertificadosPDFEstudios']['name'][$key];
-                    $nueva_ruta7[$key] = "file-registro/" . $nombre_arch7[$key];
-                    Move_uploaded_file($ruta_arch7[$key], $nueva_ruta7[$key]);
+            foreach ($_FILES["CertificadosPDFEstudios"]["error"] as $key => $error) {
+                if ($error == UPLOAD_ERR_OK) {
+                    $tmp_name = $_FILES["CertificadosPDFEstudios"]["tmp_name"][$key];
+                    $name = basename($_FILES["CertificadosPDFEstudios"]["name"][$key]);
+                    move_uploaded_file($tmp_name, "$uploads_dir/$name");
 
-                    // CERTIFICADOS DE ESTUDIOS
-                    $Registro = new Documentos();
-                    $Registro->usuario = $NumeroIdentificacion;
-                    $Registro->titulo = $TituloCertificadosEstudios[$key];
-                    $Registro->categoria = 'Certificado de Estudios';
-                    $Registro->documento = $nueva_ruta7[$key];
-                    $Registro->save();
+                    DB::beginTransaction();
+                    try {
+                        // CERTIFICADOS DE ESTUDIOS
+                        $Registro = new Documentos();
+                        $Registro->usuario = $NumeroIdentificacion;
+                        $Registro->titulo = $TituloCertificadosEstudios[$key];
+                        $Registro->categoria = 'Certificado de Estudios';
+                        $Registro->documento = "$uploads_dir/$name";
+                        $Registro->save();
+                        DB::commit();
+                        // all good
+                    } catch (\Exception $e) {
+                        DB::rollback();
+                        // something went wrong
+                    }
                 }
             }
         } else {
@@ -177,60 +193,77 @@ class RegistroController extends Controller
             $user->correo = $Correo;
             $user->password = bcrypt($Contraseña);
             $user->save();
-/*
-            $mensaje = ['Nombre' => $Nombre, 'Apellido' => $Apellido, 'Correo' => $Correo, 'Contraseña' => $Contraseña];
-            
-            $registros = new Correos();
-            $registros->Mail($mensaje);
-*/
-            foreach ($_FILES['CertificadosPDFIdiomas']['name'] as $key => $value) {
-                if ($TituloCertificadosIdiomas[$key]) {
-                    $ruta_arch5[$key] = $_FILES['CertificadosPDFIdiomas']['tmp_name'][$key];
-                    $nombre_arch5[$key] = $_FILES['CertificadosPDFIdiomas']['name'][$key];
-                    $nueva_ruta5[$key] = "file-registro/" . $nombre_arch5[$key];
-                    Move_uploaded_file($ruta_arch5[$key], $nueva_ruta5[$key]);
 
-                    // CERTIFICADOS DE IDIOMAS
-                    $Registro = new Documentos();
-                    $Registro->usuario = $NumeroIdentificacion;
-                    $Registro->titulo = $TituloCertificadosIdiomas[$key];
-                    $Registro->categoria = 'Certificado de Idiomas';
-                    $Registro->documento = $nueva_ruta5[$key];
-                    $Registro->save();
+
+            foreach ($_FILES['CertificadosPDFIdiomas']['error'] as $key => $error) {
+                if ($error == UPLOAD_ERR_OK) {
+                    $tmp_name = $_FILES["CertificadosPDFIdiomas"]["tmp_name"][$key];
+                    $name = basename($_FILES["CertificadosPDFIdiomas"]["name"][$key]);
+                    move_uploaded_file($tmp_name, "$uploads_dir/$name");
+
+                    DB::beginTransaction();
+                    try {
+                        // CERTIFICADOS DE IDIOMAS
+                        $Registro = new Documentos();
+                        $Registro->usuario = $NumeroIdentificacion;
+                        $Registro->titulo = $TituloCertificadosIdiomas[$key];
+                        $Registro->categoria = 'Certificado de Idiomas';
+                        $Registro->documento = "$uploads_dir/$name";
+                        $Registro->save();
+                        DB::commit();
+                        // all good
+                    } catch (\Exception $e) {
+                        DB::rollback();
+                        // something went wrong
+                    }
                 }
             }
 
-            foreach ($_FILES['CertificadosPDFAcademicos']['name'] as $key => $value) {
-                if ($TituloCertificadosAcademicos[$key]) {
-                    $ruta_arch6[$key] = $_FILES['CertificadosPDFAcademicos']['tmp_name'][$key];
-                    $nombre_arch6[$key] = $_FILES['CertificadosPDFAcademicos']['name'][$key];
-                    $nueva_ruta6[$key] = "file-registro/" . $nombre_arch6[$key];
-                    Move_uploaded_file($ruta_arch6[$key], $nueva_ruta6[$key]);
+            foreach ($_FILES['CertificadosPDFAcademicos']['error'] as $key => $error) {
+                if ($error == UPLOAD_ERR_OK) {
+                    $tmp_name = $_FILES["CertificadosPDFAcademicos"]["tmp_name"][$key];
+                    $name = basename($_FILES["CertificadosPDFAcademicos"]["name"][$key]);
+                    move_uploaded_file($tmp_name, "$uploads_dir/$name");
 
-                    // CERTIFICADOS DE ACADEMICOS
-                    $Registro = new Documentos();
-                    $Registro->usuario = $NumeroIdentificacion;
-                    $Registro->titulo = $TituloCertificadosAcademicos[$key];
-                    $Registro->categoria = 'Certificado Academicos';
-                    $Registro->documento = $nueva_ruta6[$key];
-                    $Registro->save();
+                    DB::beginTransaction();
+                    try {
+                        // CERTIFICADOS DE ACADEMICOS
+                        $Registro = new Documentos();
+                        $Registro->usuario = $NumeroIdentificacion;
+                        $Registro->titulo = $TituloCertificadosAcademicos[$key];
+                        $Registro->categoria = 'Certificado Academicos';
+                        $Registro->documento = "$uploads_dir/$name";
+                        $Registro->save();
+                        DB::commit();
+                        // all good
+                    } catch (\Exception $e) {
+                        DB::rollback();
+                        // something went wrong
+                    }
                 }
             }
 
-            foreach ($_FILES['CertificadosPDFEstudios']['name'] as $key => $value) {
-                if ($TituloCertificadosEstudios[$key]) {
-                    $ruta_arch7[$key] = $_FILES['CertificadosPDFEstudios']['tmp_name'][$key];
-                    $nombre_arch7[$key] = $_FILES['CertificadosPDFEstudios']['name'][$key];
-                    $nueva_ruta7[$key] = "file-registro/" . $nombre_arch7[$key];
-                    Move_uploaded_file($ruta_arch7[$key], $nueva_ruta7[$key]);
+            foreach ($_FILES['CertificadosPDFEstudios']['error'] as $key => $error) {
+                if ($error == UPLOAD_ERR_OK) {
+                    $tmp_name = $_FILES["CertificadosPDFEstudios"]["tmp_name"][$key];
+                    $name = basename($_FILES["CertificadosPDFEstudios"]["name"][$key]);
+                    move_uploaded_file($tmp_name, "$uploads_dir/$name");
 
-                    // CERTIFICADOS DE ESTUDIOS
-                    $Registro = new Documentos();
-                    $Registro->usuario = $NumeroIdentificacion;
-                    $Registro->titulo = $TituloCertificadosEstudios[$key];
-                    $Registro->categoria = 'Certificado de Estudios';
-                    $Registro->documento = $nueva_ruta7[$key];
-                    $Registro->save();
+                    DB::beginTransaction();
+                    try {
+                        // CERTIFICADOS DE ESTUDIOS
+                        $Registro = new Documentos();
+                        $Registro->usuario = $NumeroIdentificacion;
+                        $Registro->titulo = $TituloCertificadosEstudios[$key];
+                        $Registro->categoria = 'Certificado de Estudios';
+                        $Registro->documento = "$uploads_dir/$name";
+                        $Registro->save();
+                        DB::commit();
+                        // all good
+                    } catch (\Exception $e) {
+                        DB::rollback();
+                        // something went wrong
+                    }
                 }
             }
         }
@@ -292,12 +325,5 @@ class RegistroController extends Controller
     public function destroy(Registro $registro)
     {
         //
-    }
-}
-class Correos
-{
-    function Mail($mensaje)
-    {
-        Mail::to($mensaje['Correo'])->send(new RegistroReceived($mensaje));
     }
 }
