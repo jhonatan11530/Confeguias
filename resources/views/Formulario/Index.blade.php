@@ -48,8 +48,8 @@
                             <option value="Cédula de ciudadania">Cédula de ciudadanía(CC)</option>
                             <option value="Targeta de extrangeria">Tarjeta de extranjería(TE)</option>
                             <option value="Cédula de extrangeria">Cédula de extranjería(CE)</option>
-                            <option value="Número de identificacion tributaria">Número de identificación
-                                tributaria(NIT)</option>
+                            <option value="Número de identificacion tributaria">Número de identificación tributaria(NIT)
+                            </option>
                             <option value="Pasaporte">Pasaporte(PP)</option>
                             <option value="Documento de identificación de extrangero">Documento de
                                 identificación extranjero(DIE)</option>
