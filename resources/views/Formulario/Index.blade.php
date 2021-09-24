@@ -61,15 +61,6 @@
                             placeholder="Numero de identificacion" required>
                     </div>
                     <div class="form-group col-sm-6">
-                        <label>Fecha de expedición <span style="color: red">*</span></label>
-                        <input type="date" name="FechaExpedicion" value="<?php echo date("Y-m-d"); ?>"
-                            class="form-control mb-2" required>
-                    </div>
-                    <div class="form-group col-sm-6">
-                        <label>Dirreccion de residencia <span style="color: red">*</span></label>
-                        <input type="text" name="DirreccionResidencia" class="form-control mb-2" required>
-                    </div>
-                    <div class="form-group col-sm-6">
                         <label>Departamento <span style="color: red">*</span></label>
                         <select name="departamento" id="depart" class="form-control">
                             <option value="" selected disabled>Seleccione...</option>
@@ -83,6 +74,10 @@
                         <select id="ciudad" name="ciudad" class="form-control" required>
                             <option value="" selected disabled>Seleccione...</option>
                         </select>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label>Dirreccion de residencia <span style="color: red">*</span></label>
+                        <input type="text" name="DirreccionResidencia" class="form-control mb-2" required>
                     </div>
                     <div class="form-group col-sm-6">
                         <label>Celular <span style="color: red">*</span></label>

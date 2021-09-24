@@ -71,7 +71,6 @@ class RegistroController extends Controller
             $Registro->AdjuntarFoto = $nueva_ruta;
             $Registro->TipoIdentificacion = $TipoIdentificacion;
             $Registro->NumeroIdentificacion = $NumeroIdentificacion;
-            $Registro->FechaExpedicion = $FechaExpedicion;
             $Registro->DirreccionResidencia = $DirreccionResidencia;
             $Registro->Departamento = $departamento;
             $Registro->Ciudad = $ciudad;
@@ -173,7 +172,6 @@ class RegistroController extends Controller
             $Registro->AdjuntarFoto = $nueva_ruta;
             $Registro->TipoIdentificacion = $TipoIdentificacion;
             $Registro->NumeroIdentificacion = $NumeroIdentificacion;
-            $Registro->FechaExpedicion = $FechaExpedicion;
             $Registro->DirreccionResidencia = $DirreccionResidencia;
             $Registro->Departamento = $departamento;
             $Registro->Ciudad = $ciudad;
