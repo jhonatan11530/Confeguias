@@ -110,7 +110,7 @@
                 <!--Grid column-->
                 <div class="col-lg-3 col-md-12 mb-0 mb-md-0">
                     <h6 class="text-uppercase mb-0">
-                        <?php setlocale(LC_ALL, 'es_Co'); date_default_timezone_set('America/Bogota'); echo strftime("%A %d %B %Y %R"); echo"&nbsp;"; echo date('a');  ?>
+                        <?php setlocale(LC_ALL, 'es_Co.UTF-8'); date_default_timezone_set('America/Bogota'); echo strftime("%A %d %B %Y %R"); echo"&nbsp;"; echo date('a');  ?>
                     </h6>
                     <a href="#" type="button" class="btn btn-primary"><i class="fab fa-facebook-square fa-2x"></i></a>
                     <a href="#" type="button" class="btn btn-primary"><i class="fab fa-instagram fa-2x"></i></a>
