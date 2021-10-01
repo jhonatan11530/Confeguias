@@ -96,7 +96,7 @@ class RegistroController extends Controller
             foreach ($_FILES["CertificadosPDFIdiomas"]["error"] as $key => $error) {
                 if ($error == UPLOAD_ERR_OK) {
                     $tmp_name = $_FILES["CertificadosPDFIdiomas"]["tmp_name"][$key];
-                    $name = basename($_FILES["CertificadosPDFIdiomas"]["name"][$key]);
+                    $name = $_FILES["CertificadosPDFIdiomas"]["name"][$key];
                     move_uploaded_file($tmp_name, "$uploads_dir/$name");
 
                     DB::beginTransaction();
@@ -120,7 +120,7 @@ class RegistroController extends Controller
             foreach ($_FILES["CertificadosPDFAcademicos"]["error"] as $key => $error) {
                 if ($error == UPLOAD_ERR_OK) {
                     $tmp_name = $_FILES["CertificadosPDFAcademicos"]["tmp_name"][$key];
-                    $name = basename($_FILES["CertificadosPDFAcademicos"]["name"][$key]);
+                    $name = $_FILES["CertificadosPDFAcademicos"]["name"][$key];
                     move_uploaded_file($tmp_name, "$uploads_dir/$name");
 
                     DB::beginTransaction();
@@ -144,7 +144,7 @@ class RegistroController extends Controller
             foreach ($_FILES["CertificadosPDFEstudios"]["error"] as $key => $error) {
                 if ($error == UPLOAD_ERR_OK) {
                     $tmp_name = $_FILES["CertificadosPDFEstudios"]["tmp_name"][$key];
-                    $name = basename($_FILES["CertificadosPDFEstudios"]["name"][$key]);
+                    $name = $_FILES["CertificadosPDFEstudios"]["name"][$key];
                     move_uploaded_file($tmp_name, "$uploads_dir/$name");
 
                     DB::beginTransaction();
@@ -196,7 +196,7 @@ class RegistroController extends Controller
             foreach ($_FILES['CertificadosPDFIdiomas']['error'] as $key => $error) {
                 if ($error == UPLOAD_ERR_OK) {
                     $tmp_name = $_FILES["CertificadosPDFIdiomas"]["tmp_name"][$key];
-                    $name = basename($_FILES["CertificadosPDFIdiomas"]["name"][$key]);
+                    $name = $_FILES["CertificadosPDFIdiomas"]["name"][$key];
                     move_uploaded_file($tmp_name, "$uploads_dir/$name");
 
                     DB::beginTransaction();
@@ -220,7 +220,7 @@ class RegistroController extends Controller
             foreach ($_FILES['CertificadosPDFAcademicos']['error'] as $key => $error) {
                 if ($error == UPLOAD_ERR_OK) {
                     $tmp_name = $_FILES["CertificadosPDFAcademicos"]["tmp_name"][$key];
-                    $name = basename($_FILES["CertificadosPDFAcademicos"]["name"][$key]);
+                    $name = $_FILES["CertificadosPDFAcademicos"]["name"][$key];
                     move_uploaded_file($tmp_name, "$uploads_dir/$name");
 
                     DB::beginTransaction();
@@ -244,7 +244,7 @@ class RegistroController extends Controller
             foreach ($_FILES['CertificadosPDFEstudios']['error'] as $key => $error) {
                 if ($error == UPLOAD_ERR_OK) {
                     $tmp_name = $_FILES["CertificadosPDFEstudios"]["tmp_name"][$key];
-                    $name = basename($_FILES["CertificadosPDFEstudios"]["name"][$key]);
+                    $name = $_FILES["CertificadosPDFEstudios"]["name"][$key];
                     move_uploaded_file($tmp_name, "$uploads_dir/$name");
 
                     DB::beginTransaction();
