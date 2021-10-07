@@ -30,7 +30,7 @@
                     <a class="nav-link" href="/sobre-nosotros">Sobre Nosotros</a>
                 </li>
                 <li class="nav-item mr-sm-2">
-                    <a class="nav-link" href="/guias-nacionales">Guias Locales</a>
+                    <a class="nav-link" href="/guias-nacionales">Directorio de guías nacionales</a>
                 </li>
                 <li class="nav-item mr-sm-2">
                     <a class="nav-link" href="/contacto">Contacto</a>

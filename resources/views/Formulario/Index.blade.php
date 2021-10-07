@@ -62,7 +62,7 @@
                     </div>
                     <div class="form-group col-sm-6">
                         <label>Departamento <span style="color: red">*</span></label>
-                        <select name="departamento" id="depart" class="form-control">
+                        <select name="departamento" id="depart" class="form-control" required>
                             <option value="" selected disabled>Seleccione...</option>
                             @foreach ($Departamento as $key => $val)
                             <option value="{{$val->departamento}}">{{$val->departamento}}</option>
@@ -513,7 +513,7 @@
                         entregar una información exacta y confiable a las agencias de viajes y a los turistas de los
                         Guías Profesionales con su tarjeta profesional y registro nacional de turismo activo, sus
                         especializaciones, ubicación, contacto, experiencia y cualificaciones.
-                        Plazo máximo para envío: <strong>30 septiembre de 2021</strong>
+                        Plazo máximo para envío: <strong>30 Octubre de 2021</strong>
                     </p>
                 </div>
                 <div class="modal-footer">
