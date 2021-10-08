@@ -9,6 +9,7 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+
 .directorio {
     background-image: url("/img/Presentacion.svg");
     min-height: 300px;
@@ -20,7 +21,8 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
-.asociaciones  {
+
+.asociaciones {
     background-image: url("/img/Presentacion.svg");
     min-height: 300px;
     justify-content: center;
@@ -31,7 +33,8 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
-.contactenos  {
+
+.contactenos {
     background-image: url("/img/Presentacion.svg");
     min-height: 300px;
     justify-content: center;
@@ -42,6 +45,7 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+
 .parallax {
     background-image: url("/img/Presentacion.svg");
     min-height: 580px;
@@ -52,4 +56,22 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.whatsapp {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    right: 40px;
+    background-color: #25d366;
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    z-index: 100;
+}
+
+.whatsapp-icon {
+    margin-top: 13px;
 }
