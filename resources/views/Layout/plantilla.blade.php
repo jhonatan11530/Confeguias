@@ -11,7 +11,6 @@
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
-    @yield('style')
 </head>
 
 <body>
@@ -24,36 +23,40 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto w-100 justify-content-end">
                 <li class="nav-item mr-sm-2">
-                    <a class="nav-link" href="/">inicio</a>
+                    <a class="nav-link" href="/">{{__("texto.navbar.inicio")}}</a>
                 </li>
                 <li class="nav-item mr-sm-2">
-                    <a class="nav-link" href="/guias-nacionales">Directorio de guías nacionales</a>
+                    <a class="nav-link" href="/guias-nacionales">{{__("texto.navbar.guias")}}</a>
                 </li>
-                <li class="nav-item mr-sm-2">
-                    <div class="btn-group" role="group">
-                        <a class="nav-link" href="#" id="btnGroupDrop1" data-toggle="dropdown">Institucional</a>
-                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                            <a class="dropdown-item" href="/sobre-nosotros">Sobre Nosotros</a>
-                            <a class="dropdown-item" href="/directorio">Directorio</a>
-                        </div>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{__("texto.navbar.institucion")}}</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/sobre-nosotros">{{__("texto.navbar.institucion.subUNO")}}</a>
+                        <a class="dropdown-item" href="/directorio">{{__("texto.navbar.institucion.subDOS")}}</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/contacto">{{__("texto.navbar.institucion.subTRES")}}</a>
+                        <a class="dropdown-item" href="/denuncia">{{__("texto.navbar.institucion.subCUATRO")}}</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{__("texto.navbar.idioma")}}</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#" id="change_language" data-lang="es"><img src="{{ asset('img/espana.png') }}" width="15"> {{__("texto.navbar.idioma.español")}}</a>
+                        <a class="dropdown-item" href="#" id="change_language" data-lang="en"><img src="{{ asset('img/estados-unidos.png') }}" width="15"> {{__("texto.navbar.idioma.ingles")}}</a>
                     </div>
                 </li>
                 <li class="nav-item mr-sm-2">
-                    <a class="nav-link" href="/contacto">Contacto</a>
-                </li>
-                <li class="nav-item mr-sm-2">
-                    <a class="nav-link" href="/denuncia">Denuncie</a>
-                </li>
-                <li class="nav-item mr-sm-2">
-                    <a class="btn btn-primary" href="/Registro/Guia" target="_blank">Regístrate</a>
+                    <a class="btn btn-primary" href="/Registro/Guia" target="_blank">{{__("texto.navbar.externo.registro")}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="btn btn-primary" href="/Sistema/login" target="_blank">Iniciar sesión</a>
+                    <a class="btn btn-primary" href="/Sistema/login" target="_blank">{{__("texto.navbar.externo.iniciar")}}</a>
                 </li>
             </ul>
         </div>
     </nav>
-
+    
     @yield('contenido')
 
     <!---- MODAL REGISTRO ---->
@@ -133,8 +136,8 @@
 
                 <!--Grid column-->
                 <div class="col-lg-4 col-md-6 mb-0 mb-md-0">
-                    <p><a href="/terminos" class="text-white">Términos y condiciones</a></p>
-                    <p><a href="/politicas" class="text-white">Políticas y procedimientos para el tratamiento de datos
+                    <p><a href="/terminos" class="text-white">{{__("texto.footer.terminos")}}</a></p>
+                    <p><a href="/politicas" class="text-white">{{__("texto.footer.politica")}}
                             personales</a></p>
                 </div>
                 <!--Grid column-->
@@ -152,15 +155,24 @@
         <!-- Copyright -->
     </footer>
 </body>
-@yield('script')
 <script src="{{ asset('js/jquery-3.5.1.js') }}"></script>
 <script src="{{ asset('js/popper.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 <script>
     $(document).ready(function () {
         $('.carousel').carousel({
-  interval: 2000
-})
+            interval: 2000
+        }),
+        $(document).on('click','#change_language',function(){
+            var lang=$(this).attr('data-lang');
+            $.ajax({
+            url:'change-lang/'+lang,
+            type:'get',
+            success:function(data){
+                location.reload()
+            }
+            })
+      })
         $("#submit").click(function (e) { 
             $.ajax({
                 type: "POST",
