@@ -3,7 +3,7 @@
 @section('script')@show
 <div class="contactenos mb-5">
     <div class="text-center center-block" style="color: white;">
-        <h1>Denuncia</h1>
+        <h1>DENUNCIA</h1>
     </div>
 </div>
 <div class="container-fluid">

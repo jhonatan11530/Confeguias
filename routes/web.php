@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/','PaginaWebController@PaginaWebIndex');
 Route::get('sobre-nosotros','PaginaWebController@PaginaWebNosotros');
+Route::get('directorio','PaginaWebController@PaginaWebDirectorio');
 Route::get('guias-nacionales','PaginaWebController@PaginaWebGuias');
 Route::get('contacto','PaginaWebController@PaginaWebContacto');
 Route::get('terminos','PaginaWebController@PaginaWebTerminos');

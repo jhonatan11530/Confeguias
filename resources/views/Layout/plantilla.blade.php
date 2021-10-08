@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Pagina Web</title>
+    <title>Confederación de Guías de Turismo de Colombia CONFEGUIAS</title>
     <link rel="shortcut icon" href="{{ URL::asset('/favicon.ico') }}" type="image/x-icon">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
@@ -27,10 +27,16 @@
                     <a class="nav-link" href="/">inicio</a>
                 </li>
                 <li class="nav-item mr-sm-2">
-                    <a class="nav-link" href="/sobre-nosotros">Sobre Nosotros</a>
+                    <a class="nav-link" href="/guias-nacionales">Directorio de guías nacionales</a>
                 </li>
                 <li class="nav-item mr-sm-2">
-                    <a class="nav-link" href="/guias-nacionales">Directorio de guías nacionales</a>
+                    <div class="btn-group" role="group">
+                        <a class="nav-link" href="#" id="btnGroupDrop1" data-toggle="dropdown">Institucional</a>
+                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                            <a class="dropdown-item" href="/sobre-nosotros">Sobre Nosotros</a>
+                            <a class="dropdown-item" href="/directorio">Directorio</a>
+                        </div>
+                    </div>
                 </li>
                 <li class="nav-item mr-sm-2">
                     <a class="nav-link" href="/contacto">Contacto</a>
@@ -152,7 +158,9 @@
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 <script>
     $(document).ready(function () {
-        
+        $('.carousel').carousel({
+  interval: 2000
+})
         $("#submit").click(function (e) { 
             $.ajax({
                 type: "POST",

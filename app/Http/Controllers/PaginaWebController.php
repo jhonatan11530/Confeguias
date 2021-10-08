@@ -38,4 +38,8 @@ class PaginaWebController extends Controller
     {
         return view('PaginaWeb.denuncia');
     }
+    function PaginaWebDirectorio()
+    {
+        return view('PaginaWeb.directorio');
+    }
 }

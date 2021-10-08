@@ -2,7 +2,7 @@
 @section('contenido')
 <div class="asociaciones mb-5">
     <div class="text-center center-block" style="color: white;">
-        <h1>Asociaciones Agremiadas</h1>
+        <h1>ASOCIACIONES AGREMIADAS</h1>
     </div>
 </div>
 <div class="container-fluid">

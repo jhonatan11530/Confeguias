@@ -2,7 +2,7 @@
 @section('contenido')
 <div class="contactenos mb-5">
     <div class="text-center center-block" style="color: white;">
-        <h1>Contáctenos</h1>
+        <h1>CONTÁCTENOS</h1>
     </div>
 </div>
 <div class="container-fluid">
