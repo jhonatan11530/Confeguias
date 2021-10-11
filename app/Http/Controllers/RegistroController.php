@@ -42,23 +42,23 @@ class RegistroController extends Controller
         extract($_POST);
         $uploads_dir = 'file-registro';
 
-        $ruta_arch = $_FILES['AdjuntarFoto']['tmp_name'];
-        $nombre_arch = $_FILES['AdjuntarFoto']['name'];
-        $nueva_ruta = "file-registro/" . $nombre_arch;
-
-        $ruta_arch2 = $_FILES['AdjuntoTarjetaProfesional']['tmp_name'];
-        $nombre_arch2 = $_FILES['AdjuntoTarjetaProfesional']['name'];
-        $nueva_ruta2 = "file-registro/" . $nombre_arch2;
-
-        $ruta_arch3 = $_FILES['DocumentoGuiaRegistro']['tmp_name'];
-        $nombre_arch3 = $_FILES['DocumentoGuiaRegistro']['name'];
-        $nueva_ruta3 = "file-registro/" . $nombre_arch3;
-
-        Move_uploaded_file($ruta_arch, $nueva_ruta);
-        Move_uploaded_file($ruta_arch2, $nueva_ruta2);
-        Move_uploaded_file($ruta_arch3, $nueva_ruta3);
-
         if ($Guia == "SI") {
+
+            $ruta_arch = $_FILES['AdjuntarFoto']['tmp_name'];
+            $nombre_arch = $_FILES['AdjuntarFoto']['name'];
+            $nueva_ruta = "file-registro/" . $nombre_arch;
+    
+            $ruta_arch2 = $_FILES['AdjuntoTarjetaProfesional']['tmp_name'];
+            $nombre_arch2 = $_FILES['AdjuntoTarjetaProfesional']['name'];
+            $nueva_ruta2 = "file-registro/" . $nombre_arch2;
+    
+            $ruta_arch3 = $_FILES['DocumentoGuiaRegistro']['tmp_name'];
+            $nombre_arch3 = $_FILES['DocumentoGuiaRegistro']['name'];
+            $nueva_ruta3 = "file-registro/" . $nombre_arch3;
+    
+            Move_uploaded_file($ruta_arch, $nueva_ruta);
+            Move_uploaded_file($ruta_arch2, $nueva_ruta2);
+            Move_uploaded_file($ruta_arch3, $nueva_ruta3);
 
             $ruta_arch4 = $_FILES['CertificadoAsociacion']['tmp_name'];
             $nombre_arch4 = $_FILES['CertificadoAsociacion']['name'];
@@ -165,6 +165,22 @@ class RegistroController extends Controller
                 }
             }
         } else {
+
+            $ruta_arch = $_FILES['AdjuntarFoto']['tmp_name'];
+            $nombre_arch = $_FILES['AdjuntarFoto']['name'];
+            $nueva_ruta = "file-registro/" . $nombre_arch;
+    
+            $ruta_arch2 = $_FILES['AdjuntoTarjetaProfesional']['tmp_name'];
+            $nombre_arch2 = $_FILES['AdjuntoTarjetaProfesional']['name'];
+            $nueva_ruta2 = "file-registro/" . $nombre_arch2;
+    
+            $ruta_arch3 = $_FILES['DocumentoGuiaRegistro']['tmp_name'];
+            $nombre_arch3 = $_FILES['DocumentoGuiaRegistro']['name'];
+            $nueva_ruta3 = "file-registro/" . $nombre_arch3;
+    
+            Move_uploaded_file($ruta_arch, $nueva_ruta);
+            Move_uploaded_file($ruta_arch2, $nueva_ruta2);
+            Move_uploaded_file($ruta_arch3, $nueva_ruta3);
 
             $Registro = new Registro();
             $Registro->Nombre = $Nombre;
