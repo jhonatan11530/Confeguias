@@ -197,21 +197,21 @@
             })
       })
         $("#submit").click(function (e) { 
-            $.ajax({
-                type: "POST",
-                url: "/Enviar/Denuncia",
-                data: new FormData($("form#Denuncia")[0]),
-                cache: false,
-                contentType: false,
-                processData: false,
-                success: function (response) {
-                    alert("Su Denuncia se Envio Correctamente !!");
-                    location.reload();
-                },
-                error:function(){
-                    $("#ErrorDenuncia").modal("show")
-                }
-            });
+                $.ajax({
+                    type: "POST",
+                    url: "/Enviar/Denuncia",
+                    data: new FormData($("form#Denuncia")[0]),
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
+                        alert("Su Denuncia se Envio Correctamente !!");
+                        location.reload();
+                    },
+                    error:function(){
+                        $("#ErrorDenuncia").modal("show")
+                    }
+                });
         });
         $('select#Pruebas').on('change', function() {
             if (this.value =="SI") {
