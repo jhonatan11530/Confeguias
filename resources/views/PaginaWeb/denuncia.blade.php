@@ -49,11 +49,12 @@
     <div class="row">
         <div class="col-sm-12">
             <form id="Denuncia" enctype="multipart/form-data" action="">
-               {{ csrf_field() }}
+                {{ csrf_field() }}
                 <div class="row">
                     <div class="col-sm-12 mb-2">
                         <label>Nombre de Denunciante <span style="color:red">*</span></label>
-                        <input type="text" name="NombreDenunciante" placeholder="Nombre Completo" class="form-control" required>
+                        <input type="text" name="NombreDenunciante" placeholder="Nombre Completo" class="form-control"
+                            required>
                     </div>
                     <div class="col-sm-4 mb-2">
                         <label>Tipo Documento <span style="color:red">*</span></label>
@@ -77,7 +78,8 @@
                     </div>
                     <div class="col-sm-4 mb-2">
                         <label>N° Tarjeta Profesional <span style="color:red">*</span></label>
-                        <input type="number" name="NTarjetaProfesional" min="0" maxlength="10" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                        <input type="number" name="NTarjetaProfesional" min="0" maxlength="10"
+                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                             placeholder="solo numero sin digito de verificacion" class="form-control" required>
                     </div>
                     <div class="col-sm-6 mb-2">
@@ -86,7 +88,9 @@
                     </div>
                     <div class="col-sm-6 mb-2">
                         <label>Teléfono o Celular <span style="color:red">*</span></label>
-                        <input type="number" name="Telefono" min="0" maxlength="10" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" class="form-control" required>
+                        <input type="number" name="Telefono" min="0" maxlength="10"
+                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                            class="form-control" required>
                     </div>
                     <div class="col-sm-6 mb-2">
                         <label>Titulo de su Queja o Denuncia <span style="color:red">*</span></label>
@@ -97,7 +101,8 @@
                         <textarea name="DescripcionQueja" class="form-control" rows="5"></textarea>
                     </div>
                     <div class="col-sm-4 mb-5">
-                        <label>¿Posee pruebas de los hechos que acaba de Escribir? <span style="color:red">*</span></label>
+                        <label>¿Posee pruebas de los hechos que acaba de Escribir? <span
+                                style="color:red">*</span></label>
                         <select id="Pruebas" name="PoseePrueba" class="form-control" required>
                             <option value="" selected disabled>Seleccione</option>
                             <option value="SI">SI</option>

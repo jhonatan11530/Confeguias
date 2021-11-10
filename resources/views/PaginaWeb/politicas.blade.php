@@ -7,7 +7,7 @@
 </div>
 <div class="container">
     <div class="row">
-        <div class="col">
+        <div class="col text-justify">
             <p>En cumplimiento con lo establecido en la Ley Estatutaria 1581 de 2012 y en el Decreto 1377 de 2013, que
                 regulan el manejo de la información de datos personales, la CONFEDERACIÓN DE GUÍAS DE TURISMO DE
                 COLOMBIA -CONFEGUIAS- pone en conocimiento la presente política de tratamiento para la protección de

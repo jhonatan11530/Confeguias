@@ -13,25 +13,27 @@
                 {{ csrf_field() }}
                 <div class="row">
                     <div class="col-sm-12 mb-2">
-                        <label>Nombre</label>
-                        <input type="text" name="Nombre" placeholder="Nombre Completo" class="form-control">
+                        <label>Nombre <span style="color:red">*</span></label>
+                        <input type="text" name="Nombre" placeholder="Nombre Completo" class="form-control" required>
                     </div>
                     <div class="col-sm-6 mb-2">
-                        <label>Correo</label>
-                        <input type="email" name="Correo" placeholder="Correo Electrónico" class="form-control">
+                        <label>Correo <span style="color:red">*</span></label>
+                        <input type="email" name="Correo" placeholder="Correo Electrónico" class="form-control"
+                            required>
                     </div>
                     <div class="col-sm-6 mb-2">
-                        <label>Teléfono</label>
-                        <input type="number" name="Telefono" min="0" placeholder="Teléfono" class="form-control">
+                        <label>Teléfono <span style="color:red">*</span></label>
+                        <input type="number" name="Telefono" min="0" placeholder="Teléfono" class="form-control"
+                            required>
                     </div>
                     <div class="col-sm-12 mb-2">
-                        <label>Asunto</label>
-                        <input type="text" name="Asunto" placeholder="Asunto" class="form-control">
+                        <label>Asunto <span style="color:red">*</span></label>
+                        <input type="text" name="Asunto" placeholder="Asunto" class="form-control" required>
                     </div>
                     <div class="col-sm-12 mb-2">
-                        <label>Mensaje</label>
+                        <label>Mensaje <span style="color:red">*</span></label>
                         <textarea name="Mensaje" class="form-control" placeholder="Escriba su Mensaje" cols="30"
-                            rows="5"></textarea>
+                            rows="5" required></textarea>
                     </div>
                     <div class="col-sm-6">
                         <button type="submit" class="btn btn-primary mb-5">Enviar Mensaje</button>

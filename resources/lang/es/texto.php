@@ -1,8 +1,9 @@
 <?php
 return [
     "navbar.inicio"=>"inicio",
-    "navbar.guias"=>"Directorio de guías nacionales",
-    "navbar.institucion"=>"Institucional",
+    "navbar.guias"=>"Asociaciones",
+    "navbar.Normatividad"=>"Normatividad",
+    "navbar.institucion"=>"Institutional",
     "navbar.institucion.subUNO"=>"Sobre Nosotros",
     "navbar.institucion.subDOS"=>"Directorio",
     "navbar.institucion.subTRES"=>"Contacto",

@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Confederación de Guías de Turismo de Colombia CONFEGUIAS</title>
-    <link rel="shortcut icon" href="{{ URL::asset('/favicon.ico') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('/favicon.ico') }}" type="image/x-icon">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -31,7 +31,8 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{__("texto.navbar.institucion")}}</a>
+                        data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">{{__("texto.navbar.institucion")}}</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="/sobre-nosotros">{{__("texto.navbar.institucion.subUNO")}}</a>
                         <a class="dropdown-item" href="/directorio">{{__("texto.navbar.institucion.subDOS")}}</a>
@@ -41,26 +42,44 @@
                     </div>
                 </li>
                 <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
+                        data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">{{__("texto.navbar.Normatividad")}}</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                        <a class="dropdown-item" href="#">Leyes</a>
+                        <a class="dropdown-item" href="#">Decretos</a>
+                        <a class="dropdown-item" href="#">Resoluciones</a>
+                        <a class="dropdown-item" href="#">Normas Técnicas</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{__("texto.navbar.idioma")}}</a>
+                        data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">{{__("texto.navbar.idioma")}}</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#" id="change_language" data-lang="es"><img src="{{ asset('img/espana.png') }}" width="15"> {{__("texto.navbar.idioma.español")}}</a>
-                        <a class="dropdown-item" href="#" id="change_language" data-lang="en"><img src="{{ asset('img/estados-unidos.png') }}" width="15"> {{__("texto.navbar.idioma.ingles")}}</a>
+                        <a class="dropdown-item" href="#" id="change_language" data-lang="es"><img
+                                src="{{ asset('img/espana.png') }}" width="15">
+                            {{__("texto.navbar.idioma.español")}}</a>
+                        <a class="dropdown-item" href="#" id="change_language" data-lang="en"><img
+                                src="{{ asset('img/estados-unidos.png') }}" width="15">
+                            {{__("texto.navbar.idioma.ingles")}}</a>
                     </div>
                 </li>
                 <li class="nav-item mr-sm-2">
-                    <a class="btn btn-primary" href="/Registro/Guia" target="_blank">{{__("texto.navbar.externo.registro")}}</a>
+                    <a class="btn btn-primary" href="/Registro/Guia"
+                        target="_blank">{{__("texto.navbar.externo.registro")}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="btn btn-primary" href="/Sistema/login" target="_blank">{{__("texto.navbar.externo.iniciar")}}</a>
+                    <a class="btn btn-primary" href="/Sistema/login"
+                        target="_blank">{{__("texto.navbar.externo.iniciar")}}</a>
                 </li>
             </ul>
         </div>
     </nav>
-    
+
     @yield('contenido')
 
-    <!---- MODAL REGISTRO ---->
+    <!---- MODAL DENUNCIA ---->
     <div class="modal fade" id="ErrorDenuncia" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -79,6 +98,9 @@
             </div>
         </div>
     </div>
+
+    <a href="https://wa.me/573114360830?text=hola" class="whatsapp" target="_blank"><i
+            class="fa fa-whatsapp whatsapp-icon"></i></a>
 
     <footer class="bg-primary text-white text-center text-lg-start">
         <!-- Grid container -->

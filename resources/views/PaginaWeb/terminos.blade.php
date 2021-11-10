@@ -7,7 +7,7 @@
 </div>
 <div class="container">
     <div class="row">
-        <div class="col">
+        <div class="col text-justify">
             <h5><strong>Términos y Condiciones del Portal web – www.confeguias.org</strong></h5>
             <p>El presente documento describe los Términos y Condiciones establecidos para el uso del portal web
                 www.confeguias.org (en adelante el “PORTAL WEB”).</p>

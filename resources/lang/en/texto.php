@@ -1,7 +1,8 @@
 <?php
 return [
     "navbar.inicio"=>"beginning",
-    "navbar.guias"=>"Directory of national guides",
+    "navbar.guias"=>"Associations",
+    "navbar.Normatividad"=>"Normativity", 
     "navbar.institucion"=>"Institutional",
     "navbar.institucion.subUNO"=>"About us",
     "navbar.institucion.subDOS"=>"directory",
