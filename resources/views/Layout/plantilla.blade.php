@@ -186,17 +186,19 @@
 <script src="{{ asset('js/jquery-jvectormap-co-mill.js') }}"></script>
 <script>
     $(document).ready(function () {
+        var gdpData = {
+            "CO": 16.63
+        };
         $('#world-map').vectorMap({
             map: 'co_mill',
-            animate: true,
+            backgroundColor: '#005ace',
+            enableZoom: false,
             onRegionClick:function(event, code){    
                 var map = $('#world-map').vectorMap('get', 'mapObject');      
                 var name = map.getRegionName(code);
-                alert(name);
+                alert(name);  
             },
-            });
-        
-
+        });  
         $('.carousel').carousel({
             interval: 2000
         }),
