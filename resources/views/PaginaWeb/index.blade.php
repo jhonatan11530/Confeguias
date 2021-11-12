@@ -27,21 +27,21 @@
         <div class="col-4">
             <div class="card shadow-lg p-1">
                 <a href="#">
-                    <img src="{{ asset('img/Presentacion.svg') }}" class="img-fluid" alt="Error Image">
+                    <img src="https://guiasdeturismodecolombia.gov.co/images/img1.png" class="img-fluid" alt="Error Image">
                 </a>
             </div>
         </div>
         <div class="col-4">
             <div class="card shadow-lg p-1">
                 <a href="#">
-                    <img src="{{ asset('img/Presentacion.svg') }}" class="img-fluid" alt="Error Image">
+                    <img src="https://guiasdeturismodecolombia.gov.co/images/img2.png" class="img-fluid" alt="Error Image">
                 </a>
             </div>
         </div>
         <div class="col-4">
             <div class="card shadow-lg p-1">
                 <a href="#">
-                    <img src="{{ asset('img/Presentacion.svg') }}" class="img-fluid" alt="Error Image">
+                    <img src="https://guiasdeturismodecolombia.gov.co/images/img3.png" class="img-fluid" alt="Error Image">
                 </a>
             </div>
         </div>
@@ -57,7 +57,7 @@
     </a>
 </div>
 <div class="container-fluid">
-    <p class="h3 text-center">Noticias</p>
+    <p class="h3 text-center">ÚLTIMAS NOTICIAS</p>
     <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
         <div class="carousel-inner" role="listbox">
             <div class="carousel-item active">

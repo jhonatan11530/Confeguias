@@ -11,6 +11,7 @@
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/jquery-jvectormap-2.0.5.css') }}" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
@@ -181,8 +182,21 @@
 <script src="{{ asset('js/jquery-3.5.1.js') }}"></script>
 <script src="{{ asset('js/popper.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('js/jquery-jvectormap-2.0.5.min.js') }}"></script>
+<script src="{{ asset('js/jquery-jvectormap-co-mill.js') }}"></script>
 <script>
     $(document).ready(function () {
+        $('#world-map').vectorMap({
+            map: 'co_mill',
+            animate: true,
+            onRegionClick:function(event, code){    
+                var map = $('#world-map').vectorMap('get', 'mapObject');      
+                var name = map.getRegionName(code);
+                alert(name);
+            },
+            });
+        
+
         $('.carousel').carousel({
             interval: 2000
         }),
