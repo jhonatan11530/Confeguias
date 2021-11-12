@@ -186,17 +186,22 @@
 <script src="{{ asset('js/jquery-jvectormap-co-mill.js') }}"></script>
 <script>
     $(document).ready(function () {
-        var gdpData = {
-            "CO": 16.63
-        };
+        var CSRF_TOKEN = "{{ csrf_token() }}";
         $('#world-map').vectorMap({
             map: 'co_mill',
             backgroundColor: '#005ace',
             enableZoom: false,
             onRegionClick:function(event, code){    
                 var map = $('#world-map').vectorMap('get', 'mapObject');      
-                var name = map.getRegionName(code);
-                alert(name);  
+                var departamento = map.getRegionName(code);
+                $.ajax({
+                    type: "post",
+                    url: "/guias-nacionales/Filtro",
+                    data: {_token:CSRF_TOKEN,id:departamento},
+                    success: function (response) {
+                        $("#InformacionGuias").html(response);
+                    }
+                });
             },
         });  
         $('.carousel').carousel({

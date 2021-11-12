@@ -25,6 +25,8 @@ Route::get('denuncia', 'PaginaWebController@PaginaWebDenuncia');
 Route::post('Enviar/Contacto', 'MailController@MailContacto');
 Route::post('Enviar/Denuncia', 'MailController@MailDenuncia');
 
+Route::post('guias-nacionales/Filtro', 'PaginaWebController@FiltroGuias');
+
 Route::get('Registro/Guia', 'RegistroController@create');
 Route::post('Registro', 'RegistroController@store');
 Route::post('Registro/filtrar', 'RegistroController@filtrar');
