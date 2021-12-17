@@ -42,15 +42,4 @@ class PaginaWebController extends Controller
     {
         return view('PaginaWeb.directorio');
     }
-    public function FiltroGuias(Request $Request)
-    {
-        // mb_strtoupper($Request->id, 'UTF-8')
-        $html = null;
-        $html .= '<strong>FRANCISCO JAVIER QUINTERO GARCIA</strong>
-        <h6>Presidente</h6>
-        <a href="mailto:presidencia@confeguias.org">presidencia@confeguias.org</a>
-        <hr>';
-
-        return mb_strtoupper($Request->id, 'UTF-8');
-    }
 }

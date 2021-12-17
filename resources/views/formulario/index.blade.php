@@ -550,6 +550,7 @@
         </div>
     </div>
 
+
     <!---- MODAL ERROR REGISTRO ---->
     <div class="modal fade" id="ErrorModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
