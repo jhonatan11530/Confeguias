@@ -15,13 +15,15 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg justify-content-center navbar-light bg-light fixed-top">
-        <a class="navbar-brand" href="/">Navbar</a>
+    <div class="text-center">
+        <img src="{{ asset('img/logo.svg') }}" width="250" height="150" alt="image not found">
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background: rgb(0, 105, 188);">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="text-white collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto w-100 justify-content-end">
                 <li class="nav-item mr-sm-2">
                     <a class="nav-link" href="/">{{ __('texto.navbar.inicio') }}</a>
@@ -34,7 +36,8 @@
                         data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">{{ __('texto.navbar.institucion') }}</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/sobre-nosotros">{{ __('texto.navbar.institucion.subUNO') }}</a>
+                        <a class="dropdown-item"
+                            href="/sobre-nosotros">{{ __('texto.navbar.institucion.subUNO') }}</a>
                         <a class="dropdown-item" href="/directorio">{{ __('texto.navbar.institucion.subDOS') }}</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="/contacto">{{ __('texto.navbar.institucion.subTRES') }}</a>
@@ -66,12 +69,12 @@
                     </div>
                 </li>
                 <li class="nav-item mr-sm-2">
-                    <a class="btn btn-primary" href="/Registro/Guia"
-                        target="_blank">{{ __('texto.navbar.externo.registro') }}</a>
+                    <a class="nav-link" href="/Registro/Guia" target="_blank"
+                        style="color: white">{{ __('texto.navbar.externo.registro') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="btn btn-primary" href="/Sistema/login"
-                        target="_blank">{{ __('texto.navbar.externo.iniciar') }}</a>
+                    <a class="nav-link" href="/Sistema/login" target="_blank"
+                        style="color: white">{{ __('texto.navbar.externo.iniciar') }}</a>
                 </li>
             </ul>
         </div>
@@ -100,7 +103,7 @@
     </div>
     <a href="https://wa.me/573114360830?text=hola" class="whatsapp" target="_blank"><i
             class="fa fa-whatsapp whatsapp-icon"></i></a>
-    <footer class="bg-primary text-white text-center text-lg-start">
+    <footer class="text-white text-center text-lg-start" style="background: rgb(0, 153, 220)">
         <!-- Grid container -->
         <div class="container p-4">
             <!--Grid row-->
@@ -111,7 +114,7 @@
                     <h6 class="text-uppercase"><strong>Dirección</strong></h6>
                     <p>### ### ####</p>
                     <h6 class="text-uppercase"><strong>Horario atención</strong></h6>
-                    <strong style="color: red">Lunes a Jueves:</strong>
+                    <strong style="color: #0127B8">Lunes a Jueves:</strong>
                     <p>### ### ####</p>
                 </div>
                 <!--Grid column-->
@@ -142,9 +145,20 @@
                     <h6 class="text-uppercase mb-0">
                         <?php echo date('l d F o G:i a '); ?>
                     </h6>
-                    <a href="#" type="button" class="btn btn-primary"><i class="fab fa-facebook-square fa-2x"></i></a>
-                    <a href="#" type="button" class="btn btn-primary"><i class="fab fa-instagram fa-2x"></i></a>
-                    <a href="#" type="button" class="btn btn-primary"><i class="fab fa-linkedin fa-2x"></i></a>
+                    <div class="row">
+                        <div class="col-4">
+                            <a href="#" class="btn btn-link"><i class="fab fa-facebook-square fa-3x"
+                                    style="color: white"></i></a>
+                        </div>
+                        <div class="col-4">
+                            <a href="#" class="btn btn-link"><i class="fab fa-instagram fa-3x"
+                                    style="color: white"></i></a>
+                        </div>
+                        <div class="col-4">
+                            <a href="#" class="btn btn-link"><i class="fab fa-linkedin fa-3x"
+                                    style="color: white"></i></a>
+                        </div>
+                    </div>
                 </div>
                 <!--Grid column-->
 
@@ -169,7 +183,7 @@
         <!-- Grid container -->
 
         <!-- Copyright -->
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        <div class="text-center p-3" style="background-color:  rgb(0, 105, 188)">
             © 2021 Copyright:
             <a class="text-white" href="#">###########</a>
         </div>
