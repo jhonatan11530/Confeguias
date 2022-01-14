@@ -16,7 +16,7 @@
 
 <body>
     <div class="text-center">
-        <img src="{{ asset('img/logo.svg') }}" width="250" height="150" alt="image not found">
+        <img src="{{ asset('img/logo horizontal.svg') }}" class="img-fluid" width="400" height="400" alt="image not found">
     </div>
     <nav class="navbar navbar-expand-lg navbar-dark" style="background: rgb(0, 105, 188);">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -195,8 +195,19 @@ crossorigin="anonymous"></script>
 <script src="{{ asset('js/jquery-3.5.1.js') }}"></script>
 <script src="{{ asset('js/popper.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('js/jquery-jvectormap-2.0.5.min.js') }}"></script>
+<script src="{{ asset('js/jquery-jvectormap-co-mill.js') }}"></script>
 <script>
     $(document).ready(function() {
+        $('#world-map').vectorMap({
+            map: 'co_mill',
+            animate: true,
+            onRegionClick:function(event, code){    
+                var map = $('#world-map').vectorMap('get', 'mapObject');      
+                var name = map.getRegionName(code);
+                alert(name);
+            },
+            });
         $('.carousel').carousel({
                 interval: 2000
             }),

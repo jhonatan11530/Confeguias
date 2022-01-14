@@ -38,10 +38,10 @@
         Colombia, guardara en secreto su identidad y NO REVELARA sus datos personales ni la procedencia o autoria de su
         denuncia; y si la misma es válida y se halla correctamente sustentada, será asumida por nuestro gremio de manera
         institucional.</p>
-    <p><strong class="text-danger">ATENCIÓN:</strong> para que su mensaje nos llegue correctamente es necesario que en
-        la casilla <strong class="text-danger">CORREO ELECTRÓNICO</strong> señalada con letras rojas se incluya un
+    <p><strong style="color: #FF0827">ATENCIÓN:</strong> para que su mensaje nos llegue correctamente es necesario que en
+        la casilla <strong style="color: #FF0827">CORREO ELECTRÓNICO</strong> señalada con letras rojas se incluya un
         correo electrónico válido y bien escrito. En caso contrario su mensaje será rechazado.</p>
-    <div class="text-center text-danger">
+    <div class="text-center" style="color: #FF0827">
         <h4>COLEGA:<br>
             NO TEMA DENUNCIAR LO QUE AFECTA A NUESTRA PROFESIÓN Y A USTED MISMO. ESTE CONSEJO DE AGREMIACIONES ESTA PARA
             SERVIRLE Y PROTEGERLO.</h4>

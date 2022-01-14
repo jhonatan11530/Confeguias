@@ -74,7 +74,7 @@
                                     of the
                                     card's content.</p>
                                 <div class="text-center">
-                                    <a class="btn btn-primary" href="#">Ver Noticia</a>
+                                    <a class="btn btn-link" style="background-color: #0099DC;color: white" href="#">Ver Noticia</a>
                                 </div>
                             </div>
                         </div>
@@ -91,7 +91,7 @@
                                     of the
                                     card's content.</p>
                                 <div class="text-center">
-                                    <a class="btn btn-primary" href="#">Ver Noticia</a>
+                                    <a class="btn btn-primary" style="background-color: #0099DC;color: white" href="#">Ver Noticia</a>
                                 </div>
                             </div>
                         </div>
@@ -108,7 +108,7 @@
                                     of the
                                     card's content.</p>
                                 <div class="text-center">
-                                    <a class="btn btn-primary" href="#">Ver Noticia</a>
+                                    <a class="btn btn-primary" style="background-color: #0099DC;color: white" href="#">Ver Noticia</a>
                                 </div>
                             </div>
                         </div>
@@ -129,7 +129,7 @@
                                     of the
                                     card's content.</p>
                                 <div class="text-center">
-                                    <a class="btn btn-primary" href="#">Ver Noticia</a>
+                                    <a class="btn btn-primary" style="background-color: #0099DC;color: white" href="#">Ver Noticia</a>
                                 </div>
                             </div>
                         </div>
@@ -146,7 +146,7 @@
                                     of the
                                     card's content.</p>
                                 <div class="text-center">
-                                    <a class="btn btn-primary" href="#">Ver Noticia</a>
+                                    <a class="btn btn-primary" style="background-color: #0099DC;color: white" href="#">Ver Noticia</a>
                                 </div>
                             </div>
                         </div>
@@ -163,62 +163,7 @@
                                     of the
                                     card's content.</p>
                                 <div class="text-center">
-                                    <a class="btn btn-primary" href="#">Ver Noticia</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="card mb-2">
-                            <img class="card-img-top"
-                                src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(53).jpg"
-                                alt="Card image cap">
-                            <div class="card-body">
-                                <h4 class="card-title">Card title</h4>
-                                <p class="card-text">Some quick example text to build on the card title and make up the
-                                    bulk
-                                    of the
-                                    card's content.</p>
-                                <div class="text-center">
-                                    <a class="btn btn-primary" href="#">Ver Noticia</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 clearfix d-none d-md-block">
-                        <div class="card mb-2">
-                            <img class="card-img-top"
-                                src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(45).jpg"
-                                alt="Card image cap">
-                            <div class="card-body">
-                                <h4 class="card-title">Card title</h4>
-                                <p class="card-text">Some quick example text to build on the card title and make up the
-                                    bulk
-                                    of the
-                                    card's content.</p>
-                                <div class="text-center">
-                                    <a class="btn btn-primary" href="#">Ver Noticia</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 clearfix d-none d-md-block">
-                        <div class="card mb-2">
-                            <img class="card-img-top"
-                                src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(51).jpg"
-                                alt="Card image cap">
-                            <div class="card-body">
-                                <h4 class="card-title">Card title</h4>
-                                <p class="card-text">Some quick example text to build on the card title and make up the
-                                    bulk
-                                    of the
-                                    card's content.</p>
-                                <div class="text-center">
-                                    <a class="btn btn-primary" href="#">Ver Noticia</a>
+                                    <a class="btn btn-primary" style="background-color: #0099DC;color: white" href="#">Ver Noticia</a>
                                 </div>
                             </div>
                         </div>
