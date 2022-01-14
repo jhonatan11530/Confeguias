@@ -24,27 +24,27 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto w-100 justify-content-end">
                 <li class="nav-item mr-sm-2">
-                    <a class="nav-link" href="/">{{__("texto.navbar.inicio")}}</a>
+                    <a class="nav-link" href="/">{{ __('texto.navbar.inicio') }}</a>
                 </li>
                 <li class="nav-item mr-sm-2">
-                    <a class="nav-link" href="/guias-nacionales">{{__("texto.navbar.guias")}}</a>
+                    <a class="nav-link" href="/guias-nacionales">{{ __('texto.navbar.guias') }}</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false">{{__("texto.navbar.institucion")}}</a>
+                        aria-expanded="false">{{ __('texto.navbar.institucion') }}</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/sobre-nosotros">{{__("texto.navbar.institucion.subUNO")}}</a>
-                        <a class="dropdown-item" href="/directorio">{{__("texto.navbar.institucion.subDOS")}}</a>
+                        <a class="dropdown-item" href="/sobre-nosotros">{{ __('texto.navbar.institucion.subUNO') }}</a>
+                        <a class="dropdown-item" href="/directorio">{{ __('texto.navbar.institucion.subDOS') }}</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="/contacto">{{__("texto.navbar.institucion.subTRES")}}</a>
-                        <a class="dropdown-item" href="/denuncia">{{__("texto.navbar.institucion.subCUATRO")}}</a>
+                        <a class="dropdown-item" href="/contacto">{{ __('texto.navbar.institucion.subTRES') }}</a>
+                        <a class="dropdown-item" href="/denuncia">{{ __('texto.navbar.institucion.subCUATRO') }}</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
                         data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false">{{__("texto.navbar.Normatividad")}}</a>
+                        aria-expanded="false">{{ __('texto.navbar.Normatividad') }}</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
                         <a class="dropdown-item" href="#">Leyes</a>
                         <a class="dropdown-item" href="#">Decretos</a>
@@ -55,23 +55,23 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false">{{__("texto.navbar.idioma")}}</a>
+                        aria-expanded="false">{{ __('texto.navbar.idioma') }}</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#" id="change_language" data-lang="es"><img
                                 src="{{ asset('img/espana.png') }}" width="15">
-                            {{__("texto.navbar.idioma.español")}}</a>
+                            {{ __('texto.navbar.idioma.español') }}</a>
                         <a class="dropdown-item" href="#" id="change_language" data-lang="en"><img
                                 src="{{ asset('img/estados-unidos.png') }}" width="15">
-                            {{__("texto.navbar.idioma.ingles")}}</a>
+                            {{ __('texto.navbar.idioma.ingles') }}</a>
                     </div>
                 </li>
                 <li class="nav-item mr-sm-2">
                     <a class="btn btn-primary" href="/Registro/Guia"
-                        target="_blank">{{__("texto.navbar.externo.registro")}}</a>
+                        target="_blank">{{ __('texto.navbar.externo.registro') }}</a>
                 </li>
                 <li class="nav-item">
                     <a class="btn btn-primary" href="/Sistema/login"
-                        target="_blank">{{__("texto.navbar.externo.iniciar")}}</a>
+                        target="_blank">{{ __('texto.navbar.externo.iniciar') }}</a>
                 </li>
             </ul>
         </div>
@@ -98,10 +98,8 @@
             </div>
         </div>
     </div>
-
     <a href="https://wa.me/573114360830?text=hola" class="whatsapp" target="_blank"><i
             class="fa fa-whatsapp whatsapp-icon"></i></a>
-
     <footer class="bg-primary text-white text-center text-lg-start">
         <!-- Grid container -->
         <div class="container p-4">
@@ -139,10 +137,10 @@
             </div>
             <hr>
             <div class="row">
-                <!--Grid column-->
+                <!--Grid column    Friday 14 January 2022 14:40 pm -->
                 <div class="col-lg-3 col-md-12 mb-0 mb-md-0">
                     <h6 class="text-uppercase mb-0">
-                        <?php setlocale(LC_ALL, 'es_Co.UTF-8'); date_default_timezone_set('America/Bogota'); echo strftime("%A %d %B %Y %R"); echo"&nbsp;"; echo date('a');  ?>
+                        <?php echo date('l d F o G:i a '); ?>
                     </h6>
                     <a href="#" type="button" class="btn btn-primary"><i class="fab fa-facebook-square fa-2x"></i></a>
                     <a href="#" type="button" class="btn btn-primary"><i class="fab fa-instagram fa-2x"></i></a>
@@ -159,8 +157,8 @@
 
                 <!--Grid column-->
                 <div class="col-lg-4 col-md-6 mb-0 mb-md-0">
-                    <p><a href="/terminos" class="text-white">{{__("texto.footer.terminos")}}</a></p>
-                    <p><a href="/politicas" class="text-white">{{__("texto.footer.politica")}}
+                    <p><a href="/terminos" class="text-white">{{ __('texto.footer.terminos') }}</a></p>
+                    <p><a href="/politicas" class="text-white">{{ __('texto.footer.politica') }}
                             personales</a></p>
                 </div>
                 <!--Grid column-->
@@ -178,43 +176,45 @@
         <!-- Copyright -->
     </footer>
 </body>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5944715520754383"
+crossorigin="anonymous"></script>
 <script src="{{ asset('js/jquery-3.5.1.js') }}"></script>
 <script src="{{ asset('js/popper.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
         $('.carousel').carousel({
-            interval: 2000
-        }),
-        $(document).on('click','#change_language',function(){
-            var lang=$(this).attr('data-lang');
-            $.ajax({
-            url:'change-lang/'+lang,
-            type:'get',
-            success:function(data){
-                location.reload()
-            }
-            })
-      })
-        $("#submit").click(function (e) { 
+                interval: 2000
+            }),
+            $(document).on('click', '#change_language', function() {
+                var lang = $(this).attr('data-lang');
                 $.ajax({
-                    type: "POST",
-                    url: "/Enviar/Denuncia",
-                    data: new FormData($("form#Denuncia")[0]),
-                    cache: false,
-                    contentType: false,
-                    processData: false,
-                    success: function (response) {
-                        alert("Su Denuncia se Envio Correctamente !!");
-                        location.reload();
-                    },
-                    error:function(){
-                        $("#ErrorDenuncia").modal("show")
+                    url: 'change-lang/' + lang,
+                    type: 'get',
+                    success: function(data) {
+                        location.reload()
                     }
-                });
+                })
+            })
+        $("#submit").click(function(e) {
+            $.ajax({
+                type: "POST",
+                url: "/Enviar/Denuncia",
+                data: new FormData($("form#Denuncia")[0]),
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function(response) {
+                    alert("Su Denuncia se Envio Correctamente !!");
+                    location.reload();
+                },
+                error: function() {
+                    $("#ErrorDenuncia").modal("show")
+                }
+            });
         });
         $('select#Pruebas').on('change', function() {
-            if (this.value =="SI") {
+            if (this.value == "SI") {
                 var asignar = `<div class="col-sm-12">
                             <label>Descripcion de los Hechos <span style="color:red">*</span></label>
                             <textarea name="DescripcionHechos" class="form-control" rows="5" required></textarea>
@@ -223,12 +223,12 @@
                             <label>Adjuntar Pruebas <span style="color:red">*</span></label>
                             <input type="file" name="AdjuntarPruebas[]" multiple='multiple' class="form-control" required>
                             </div>`;
-                    $("#Mostrar").html(asignar);
-            }else{
+                $("#Mostrar").html(asignar);
+            } else {
                 $("#Mostrar").empty();
             }
         });
-});
+    });
 </script>
 
 
