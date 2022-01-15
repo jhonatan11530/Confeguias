@@ -5,5 +5,6 @@
         <h1>ASOCIACIONES REGIONALES DE GUÍAS</h1>
     </div>
 </div>
-<div id="world-map" style="width: 100%; height: 800px" class="mb-5"></div>
+    <div id="world-map" style="width: 100%; height: 400px" class="mb-5"></div>
+
 @endsection
