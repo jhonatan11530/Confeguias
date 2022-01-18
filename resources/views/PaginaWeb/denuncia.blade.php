@@ -41,7 +41,7 @@
     <p><strong style="color: #FF0827">ATENCIÓN:</strong> para que su mensaje nos llegue correctamente es necesario que en
         la casilla <strong style="color: #FF0827">CORREO ELECTRÓNICO</strong> señalada con letras rojas se incluya un
         correo electrónico válido y bien escrito. En caso contrario su mensaje será rechazado.</p>
-    <div class="text-center" style="color: #FF0827">
+    <div class="text-center" style="color: #FF0827;">
         <h4>COLEGA:<br>
             NO TEMA DENUNCIAR LO QUE AFECTA A NUESTRA PROFESIÓN Y A USTED MISMO. ESTE CONSEJO DE AGREMIACIONES ESTA PARA
             SERVIRLE Y PROTEGERLO.</h4>
